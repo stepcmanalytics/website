@@ -3,10 +3,6 @@ project:
   output-dir: docs
 
 
-website:
-  title: "[Your Practice Name]"
-  favicon: ""
-  navbar: false
 
 format:
   html:
