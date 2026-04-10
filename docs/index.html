@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -103,6 +68,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -141,42 +109,136 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">B.AAJ-Website</h1>
+
+
+
+<!-- NAV -->
+<nav class="site-nav">
+<p><strong>STEP-CM Analytics</strong></p>
+<ul class="nav-links">
+<li>
+<a href="#about">About</a>
+</li>
+<li>
+<a href="#services">Services</a>
+</li>
+<li>
+<a href="#credentials">Background</a>
+</li>
+<li>
+<a href="#contact">Contact</a>
+</li>
+</ul>
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<pre><code>&lt;p class="hero-eyebrow"&gt;Independent Statistical Consulting&lt;/p&gt;
+&lt;h1 class="hero-title"&gt;[Your Practice Name]&lt;/h1&gt;
+&lt;p class="hero-tagline"&gt;[Your tagline — e.g., "Rigorous analysis. Clear answers."]&lt;/p&gt;
+&lt;a href="#contact" class="cta-btn"&gt;Get in Touch&lt;/a&gt;</code></pre>
 </div>
+<div class="hero-rule">
 
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
 </div>
+</section>
+<!-- ABOUT -->
+<section id="about" class="section">
+<div class="section-inner two-col">
+<pre><code>&lt;div class="section-label"&gt;About&lt;/div&gt;
+&lt;div class="section-body"&gt;
+  &lt;h2&gt;Who We Are&lt;/h2&gt;
+  &lt;p&gt;[Introduce your practice here. Describe the problem you solve, who you work with, and what makes your approach distinctive. Keep it to 2–3 focused sentences.]&lt;/p&gt;
+  &lt;p&gt;[Optional second paragraph — e.g., your philosophy, values, or commitment to rigour and transparency in analysis.]&lt;/p&gt;
+&lt;/div&gt;</code></pre>
 </div>
+</section>
+<!-- SERVICES -->
+<section id="services" class="section section-alt">
+<div class="section-inner">
+<pre><code>&lt;div class="section-label"&gt;Services&lt;/div&gt;
+&lt;div class="section-body"&gt;
+  &lt;h2&gt;What We Do&lt;/h2&gt;
+  &lt;div class="services-grid"&gt;
+    &lt;div class="service-card"&gt;
+      &lt;h3&gt;Statistical Analysis&lt;/h3&gt;
+      &lt;p&gt;[Description of service — e.g., mixed-effects models, regression, count data, survival analysis.]&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="service-card"&gt;
+      &lt;h3&gt;Study Design &amp; Methods&lt;/h3&gt;
+      &lt;p&gt;[Description — e.g., protocol development, sample size justification, analysis planning.]&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="service-card"&gt;
+      &lt;h3&gt;Epidemiological Research&lt;/h3&gt;
+      &lt;p&gt;[Description — e.g., observational study design, causal inference, disease surveillance.]&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="service-card"&gt;
+      &lt;h3&gt;Reporting &amp; Manuscript Support&lt;/h3&gt;
+      &lt;p&gt;[Description — e.g., statistical sections for peer-reviewed publications, regulatory submissions.]&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</section>
+<!-- CREDENTIALS -->
+<section id="credentials" class="section">
+<div class="section-inner two-col">
+<pre><code>&lt;div class="section-label"&gt;Background&lt;/div&gt;
+&lt;div class="section-body"&gt;
+  &lt;h2&gt;Credentials &amp; Experience&lt;/h2&gt;
+  &lt;ul class="credentials-list"&gt;
+    &lt;li&gt;
+      &lt;span class="cred-title"&gt;PhD, Epidemiology&lt;/span&gt;
+      &lt;span class="cred-detail"&gt;[University, Year]&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;span class="cred-title"&gt;Doctor of Veterinary Medicine (DVM)&lt;/span&gt;
+      &lt;span class="cred-detail"&gt;[University, Year]&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;span class="cred-title"&gt;Applied Mathematics &amp; Statistics&lt;/span&gt;
+      &lt;span class="cred-detail"&gt;[Relevant training or coursework]&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;span class="cred-title"&gt;Areas of Expertise&lt;/span&gt;
+      &lt;span class="cred-detail"&gt;Biostatistics · Health research · Veterinary epidemiology · Mixed models · Causal inference&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;span class="cred-title"&gt;Clients &amp; Sectors&lt;/span&gt;
+      &lt;span class="cred-detail"&gt;[e.g., Academic institutions, federal health agencies, veterinary organizations, pediatric research]&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact" class="section section-alt">
+<div class="section-inner two-col">
+<pre><code>&lt;div class="section-label"&gt;Contact&lt;/div&gt;
+&lt;div class="section-body"&gt;
+  &lt;h2&gt;Get in Touch&lt;/h2&gt;
+  &lt;p&gt;[A brief, warm invitation — e.g., "Available for project-based engagements, ongoing collaborations, and advisory work. Reach out to discuss your needs."]&lt;/p&gt;
+  &lt;div class="contact-block"&gt;
+    &lt;p&gt;&lt;span class="contact-label"&gt;Email&lt;/span&gt;&lt;a href="mailto:you@example.com"&gt;you@example.com&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;span class="contact-label"&gt;Location&lt;/span&gt;Ontario, Canada&lt;/p&gt;
+    &lt;p&gt;&lt;span class="contact-label"&gt;LinkedIn&lt;/span&gt;&lt;a href="#"&gt;linkedin.com/in/yourprofile&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="site-footer">
+<p>
+© 2026 [Your Practice Name] — Ontario, Canada
+</p>
+</footer>
 
 
 
@@ -586,4 +648,5 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
