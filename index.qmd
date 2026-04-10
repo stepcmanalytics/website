@@ -13,6 +13,7 @@ format:
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 ---
 
+```{=html}
 <!-- NAV -->
 <nav class="site-nav">
   <strong><a href="#">[Your business name]</a></strong>
@@ -127,3 +128,4 @@ format:
 <footer class="site-footer">
   <p>© 2026 [Your Practice Name] — Ontario, Canada</p>
 </footer>
+```
