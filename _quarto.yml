@@ -1,22 +1,15 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: _site
 
 website:
-  title: "B.AAJ-Website"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  title: "[Your Practice Name]"
+  favicon: ""
+  navbar: false
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: none
     css: styles.css
-    toc: true
-
-editor: visual
-
+    toc: false
+    page-layout: full
