@@ -15,6 +15,7 @@
 # Quarto working files
 /.quarto/
 *_files/
+_site/
 
 # OS files
 .DS_Store
