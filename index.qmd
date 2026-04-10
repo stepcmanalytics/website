@@ -41,9 +41,8 @@ format:
   <div class="section-inner two-col">
     <div class="section-label">About</div>
     <div class="section-body">
-      <h2>Who We Are</h2>
-      <p>My goal is to help the non-statistical expert understand their data so that they can feel empowered to make their own decisions.</p>
-      <p>[Optional second paragraph — e.g., your philosophy, values, or commitment to rigour and transparency in analysis.]</p>
+      <h2>About Me</h2>
+      <p>My name is Ben Ouyang. For the past 20 years, I have worked at the intersection of epidemiology, statistics and comparative medicine to improve human and animal lives. This cross-functional experience has taught me how to use statistics to empower the non-statistical expert. My goal is to help you understand your dataset so that you can be confident in leaning on your own expertise to make the decisions you need to make. </p>
     </div>
   </div>
 </section>
