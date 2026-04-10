@@ -1,6 +1,7 @@
 project:
-  type: website
-  output-dir: _site
+  type: default
+  output-dir: docs
+
 
 website:
   title: "[Your Practice Name]"
