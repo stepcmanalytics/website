@@ -17,7 +17,7 @@ format:
 
 <nav class="site-nav">
 
-[**\[Your Practice Name\]**]{.nav-logo}
+**STEP-CM Analytics**
 
 <ul class="nav-links">
 
