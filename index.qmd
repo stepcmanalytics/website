@@ -14,140 +14,116 @@ format:
 ---
 
 <!-- NAV -->
-
 <nav class="site-nav">
-
-**[Your business name]**
-
-<ul class="nav-links">
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#credentials">Background</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
+  <strong><a href="#">[Your business name]</a></strong>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#credentials">Background</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
-
 <section class="hero">
-
-::: hero-inner
-<p class="hero-eyebrow">Independent Statistical Consulting</p>
-<h1 class="hero-title">[Your Practice Name]</h1>
-<p class="hero-tagline">[Your tagline — e.g., "Rigorous analysis. Clear answers."]</p>
-<a href="#contact" class="cta-btn">Get in Touch</a>
-:::
-
-::: hero-rule
-:::
-
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Independent Statistical Consulting</p>
+    <h1 class="hero-title">[Your Practice Name]</h1>
+    <p class="hero-tagline">[Your tagline — e.g., "Rigorous analysis. Clear answers."]</p>
+    <a href="#contact" class="cta-btn">Get in Touch</a>
+  </div>
+  <div class="hero-rule"></div>
 </section>
 
 <!-- ABOUT -->
-
 <section id="about" class="section">
-
-::: {.section-inner .two-col}
-<div class="section-label">About</div>
-<div class="section-body">
-  <h2>Who We Are</h2>
-  <p>[Introduce your practice here. Describe the problem you solve, who you work with, and what makes your approach distinctive. Keep it to 2–3 focused sentences.]</p>
-  <p>[Optional second paragraph — e.g., your philosophy, values, or commitment to rigour and transparency in analysis.]</p>
-</div>
-:::
-
+  <div class="section-inner two-col">
+    <div class="section-label">About</div>
+    <div class="section-body">
+      <h2>Who We Are</h2>
+      <p>[Introduce your practice here. Describe the problem you solve, who you work with, and what makes your approach distinctive. Keep it to 2–3 focused sentences.]</p>
+      <p>[Optional second paragraph — e.g., your philosophy, values, or commitment to rigour and transparency in analysis.]</p>
+    </div>
+  </div>
 </section>
 
 <!-- SERVICES -->
-
 <section id="services" class="section section-alt">
-
-::: section-inner
-<div class="section-label">Services</div>
-<div class="section-body">
-  <h2>What We Do</h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <h3>Statistical Analysis</h3>
-      <p>[Description of service — e.g., mixed-effects models, regression, count data, survival analysis.]</p>
-    </div>
-    <div class="service-card">
-      <h3>Study Design & Methods</h3>
-      <p>[Description — e.g., protocol development, sample size justification, analysis planning.]</p>
-    </div>
-    <div class="service-card">
-      <h3>Epidemiological Research</h3>
-      <p>[Description — e.g., observational study design, causal inference, disease surveillance.]</p>
-    </div>
-    <div class="service-card">
-      <h3>Reporting & Manuscript Support</h3>
-      <p>[Description — e.g., statistical sections for peer-reviewed publications, regulatory submissions.]</p>
+  <div class="section-inner">
+    <div class="section-label">Services</div>
+    <div class="section-body">
+      <h2>What We Do</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Statistical Analysis</h3>
+          <p>[Description of service — e.g., mixed-effects models, regression, count data, survival analysis.]</p>
+        </div>
+        <div class="service-card">
+          <h3>Study Design &amp; Methods</h3>
+          <p>[Description — e.g., protocol development, sample size justification, analysis planning.]</p>
+        </div>
+        <div class="service-card">
+          <h3>Epidemiological Research</h3>
+          <p>[Description — e.g., observational study design, causal inference, disease surveillance.]</p>
+        </div>
+        <div class="service-card">
+          <h3>Reporting &amp; Manuscript Support</h3>
+          <p>[Description — e.g., statistical sections for peer-reviewed publications, regulatory submissions.]</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-:::
-
 </section>
 
 <!-- CREDENTIALS -->
-
 <section id="credentials" class="section">
-
-::: {.section-inner .two-col}
-<div class="section-label">Background</div>
-<div class="section-body">
-  <h2>Credentials & Experience</h2>
-  <ul class="credentials-list">
-    <li>
-      <span class="cred-title">PhD, Epidemiology</span>
-      <span class="cred-detail">[University, Year]</span>
-    </li>
-    <li>
-      <span class="cred-title">Doctor of Veterinary Medicine (DVM)</span>
-      <span class="cred-detail">[University, Year]</span>
-    </li>
-    <li>
-      <span class="cred-title">Applied Mathematics & Statistics</span>
-      <span class="cred-detail">[Relevant training or coursework]</span>
-    </li>
-    <li>
-      <span class="cred-title">Areas of Expertise</span>
-      <span class="cred-detail">Biostatistics · Health research · Veterinary epidemiology · Mixed models · Causal inference</span>
-    </li>
-    <li>
-      <span class="cred-title">Clients & Sectors</span>
-      <span class="cred-detail">[e.g., Academic institutions, federal health agencies, veterinary organizations, pediatric research]</span>
-    </li>
-  </ul>
-</div>
-:::
-
+  <div class="section-inner two-col">
+    <div class="section-label">Background</div>
+    <div class="section-body">
+      <h2>Credentials &amp; Experience</h2>
+      <ul class="credentials-list">
+        <li>
+          <span class="cred-title">PhD, Epidemiology</span>
+          <span class="cred-detail">[University, Year]</span>
+        </li>
+        <li>
+          <span class="cred-title">Doctor of Veterinary Medicine (DVM)</span>
+          <span class="cred-detail">[University, Year]</span>
+        </li>
+        <li>
+          <span class="cred-title">Applied Mathematics &amp; Statistics</span>
+          <span class="cred-detail">[Relevant training or coursework]</span>
+        </li>
+        <li>
+          <span class="cred-title">Areas of Expertise</span>
+          <span class="cred-detail">Biostatistics · Health research · Veterinary epidemiology · Mixed models · Causal inference</span>
+        </li>
+        <li>
+          <span class="cred-title">Clients &amp; Sectors</span>
+          <span class="cred-detail">[e.g., Academic institutions, federal health agencies, veterinary organizations, pediatric research]</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact" class="section section-alt">
-
-::: {.section-inner .two-col}
-<div class="section-label">Contact</div>
-<div class="section-body">
-  <h2>Get in Touch</h2>
-  <p>[A brief, warm invitation — e.g., "Available for project-based engagements, ongoing collaborations, and advisory work. Reach out to discuss your needs."]</p>
-  <div class="contact-block">
-    <p><span class="contact-label">Email</span><a href="mailto:you@example.com">you@example.com</a></p>
-    <p><span class="contact-label">Location</span>Ontario, Canada</p>
-    <p><span class="contact-label">LinkedIn</span><a href="#">linkedin.com/in/yourprofile</a></p>
+  <div class="section-inner two-col">
+    <div class="section-label">Contact</div>
+    <div class="section-body">
+      <h2>Get in Touch</h2>
+      <p>[A brief, warm invitation — e.g., "Available for project-based engagements, ongoing collaborations, and advisory work. Reach out to discuss your needs."]</p>
+      <div class="contact-block">
+        <p><span class="contact-label">Email</span><a href="mailto:you@example.com">you@example.com</a></p>
+        <p><span class="contact-label">Location</span>Ontario, Canada</p>
+        <p><span class="contact-label">LinkedIn</span><a href="#">linkedin.com/in/yourprofile</a></p>
+      </div>
+    </div>
   </div>
-</div>
-:::
-
 </section>
 
 <!-- FOOTER -->
-
 <footer class="site-footer">
-
-<p>© 2026 [Your Practice Name] — Ontario, Canada</p>
-
+  <p>© 2026 [Your Practice Name] — Ontario, Canada</p>
 </footer>
