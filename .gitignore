@@ -1,7 +1,21 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
 
 /.quarto/
 **/*.quarto_ipynb
+
+# R project files
+.Rproj.user
+*.Rproj
+.Rhistory
+.RData
+.Ruserdata
+.RData
+.Ruserdata
+
+
+# Quarto working files
+/.quarto/
+*_files/
+
+# OS files
+.DS_Store
+Thumbs.db
