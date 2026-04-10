@@ -17,18 +17,13 @@ format:
 
 <nav class="site-nav">
 
-**STEP-CM Analytics**
+**[Your business name]**
 
 <ul class="nav-links">
-
 <li><a href="#about">About</a></li>
-
 <li><a href="#services">Services</a></li>
-
 <li><a href="#credentials">Background</a></li>
-
 <li><a href="#contact">Contact</a></li>
-
 </ul>
 
 </nav>
@@ -38,12 +33,10 @@ format:
 <section class="hero">
 
 ::: hero-inner
-```         
 <p class="hero-eyebrow">Independent Statistical Consulting</p>
 <h1 class="hero-title">[Your Practice Name]</h1>
 <p class="hero-tagline">[Your tagline — e.g., "Rigorous analysis. Clear answers."]</p>
 <a href="#contact" class="cta-btn">Get in Touch</a>
-```
 :::
 
 ::: hero-rule
@@ -56,14 +49,12 @@ format:
 <section id="about" class="section">
 
 ::: {.section-inner .two-col}
-```         
 <div class="section-label">About</div>
 <div class="section-body">
   <h2>Who We Are</h2>
   <p>[Introduce your practice here. Describe the problem you solve, who you work with, and what makes your approach distinctive. Keep it to 2–3 focused sentences.]</p>
   <p>[Optional second paragraph — e.g., your philosophy, values, or commitment to rigour and transparency in analysis.]</p>
 </div>
-```
 :::
 
 </section>
@@ -73,7 +64,6 @@ format:
 <section id="services" class="section section-alt">
 
 ::: section-inner
-```         
 <div class="section-label">Services</div>
 <div class="section-body">
   <h2>What We Do</h2>
@@ -96,7 +86,6 @@ format:
     </div>
   </div>
 </div>
-```
 :::
 
 </section>
@@ -106,7 +95,6 @@ format:
 <section id="credentials" class="section">
 
 ::: {.section-inner .two-col}
-```         
 <div class="section-label">Background</div>
 <div class="section-body">
   <h2>Credentials & Experience</h2>
@@ -133,7 +121,6 @@ format:
     </li>
   </ul>
 </div>
-```
 :::
 
 </section>
@@ -143,7 +130,6 @@ format:
 <section id="contact" class="section section-alt">
 
 ::: {.section-inner .two-col}
-```         
 <div class="section-label">Contact</div>
 <div class="section-body">
   <h2>Get in Touch</h2>
@@ -154,7 +140,6 @@ format:
     <p><span class="contact-label">LinkedIn</span><a href="#">linkedin.com/in/yourprofile</a></p>
   </div>
 </div>
-```
 :::
 
 </section>
@@ -163,6 +148,6 @@ format:
 
 <footer class="site-footer">
 
-<p>© 2026 \[Your Practice Name\] — Ontario, Canada</p>
+<p>© 2026 [Your Practice Name] — Ontario, Canada</p>
 
 </footer>
