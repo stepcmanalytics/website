@@ -129,7 +129,6 @@ format:
       <div class="contact-block">
         <p><span class="contact-label">Email</span><a href="mailto:you@example.com">stepcmanalytics@gmail.com</a></p>
         <p><span class="contact-label">Location</span>Ontario, Canada</p>
-        <p><span class="contact-label">LinkedIn</span><a href="#">linkedin.com/in/yourprofile</a></p>
       </div>
     </div>
   </div>
