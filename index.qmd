@@ -55,20 +55,32 @@ format:
       <h2>What We Do</h2>
       <div class="services-grid">
         <div class="service-card">
-          <h3>Statistical Analysis</h3>
-          <p>[Description of service — e.g., mixed-effects models, regression, count data, survival analysis.]</p>
+          <h3>Study Design</h3>
+          <p>For those undertaking a new investigation and would like help with formulating a research question, developing on a study protocol, what data to collect, sample size calculations and structuring their database.</p>
         </div>
         <div class="service-card">
-          <h3>Study Design &amp; Methods</h3>
-          <p>[Description — e.g., protocol development, sample size justification, analysis planning.]</p>
+          <h3>Data cleaning, merging and formatting</h3>
+          <p>For if you need to prepare your data for analysis. Some examples might include if you have a lot of manual data entries with human error, formatting conflicts or utilizing data from various sources relevant to but not specifically designed for you research question.</p>
         </div>
         <div class="service-card">
-          <h3>Epidemiological Research</h3>
-          <p>[Description — e.g., observational study design, causal inference, disease surveillance.]</p>
+          <h3>Understanding your data</h3>
+          <p>For if you want to understand how best to interrogate your data. I explore your data thoroughly to understand how complete your data is and what questions might be most amenable to being answered by your data.</p>
         </div>
         <div class="service-card">
-          <h3>Reporting &amp; Manuscript Support</h3>
-          <p>[Description — e.g., statistical sections for peer-reviewed publications, regulatory submissions.]</p>
+          <h3>Statistical analysis</h3>
+          <p>For data generated from a designed study: I will conduct analyses in alignment with your study question and design. For datasets generated for purposes other than the study objective: I will apply your study objective to the data and conduct exploratory analyses, being fully transparent about biases and limitations. Statistical toolbox includes: descriptive and data visualization; linear, logistic and poisson regression methods; ROC; time-to-event/survival; bootstrapping; etc.</p>
+        </div>
+        <div class="service-card">
+          <h3>Proof-of-concept artificial intelligence & machine learning models</h3>
+          <p>If you would like to see if your data can power predictions and classifications, I can build preliminary artificial intelligence and machine learning models to help you get started. I can engineer features and provide insight into their associative or causal links to the outcome.</p>
+        </div>
+        <div class="service-card">
+          <h3>Reporting and manuscript support</h3>
+          <p>If you are planning to publish your research in a scientific journal, I will provide documentation of the methods I used as well as the results of the analysis. I will work with your subject-matter experts to provide discussion points that are both scientifically and statistically sound.</p>
+        </div>
+        <div class="service-card">
+          <h3>Statistical and epidemiological training for clinical research</h3>
+          <p>For if you need some guidance in building or applying your statistical and epidemiological tools. Good option for veterinary/medical interns, residents and other trainees involved in research.</p>
         </div>
       </div>
     </div>
@@ -83,7 +95,7 @@ format:
       <h2>Credentials &amp; Experience</h2>
       <ul class="credentials-list">
         <li>
-          <span class="cred-title">PhD, Epidemiology</span>
+          <span class="cred-title">PhD-Epidemiology</span>
           <span class="cred-detail">University of Guelph, 2021</span>
         </li>
         <li>
@@ -91,7 +103,7 @@ format:
           <span class="cred-detail">University of Pennsylvania, 2014</span>
         </li>
         <li>
-          <span class="cred-title">Applied Mathematics &amp; Statistics</span>
+          <span class="cred-title">MSE-Applied Mathematics &amp; Statistics</span>
           <span class="cred-detail">Johns Hopkins University, 2007</span>
         </li>
         <li>
