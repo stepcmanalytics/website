@@ -58,23 +58,23 @@ format:
       <div class="services-grid">
         <div class="service-card">
           <h3>Study Design</h3>
-          <p>For those undertaking a new investigation and would like help with things like  formulation of research objectives/questions/hypotheses, protocols, selecting what data to collect, sample size calculations and database structure.</p>
+          <p>For those undertaking a new investigation and would like help with things like formulation of research objectives/questions/hypotheses, protocols, selecting what data to collect, sample size calculations and database structure.</p>
         </div>
         <div class="service-card">
           <h3>Data cleaning, merging and formatting</h3>
-          <p>Sometimes data has been collected, but it's not quite ready for analysis. Human errors in data entry can cause incongruencies that make analysis difficult. Sometimes data comes from multiple sources and they need to be merged. And other times, data is in various formats that cannot coexist without compromising the analyzability of your data. These issues are often the most challenging and time-consuming part of data work. I can perform the complex operations needed to get your dataset in shape for your analysis while keeping a record of each operation to ensure reproducilibiy and repeatability.</p>
+          <p>Sometimes data has been collected, but it's not quite ready for analysis. Human errors in data entry can cause incongruencies that make analysis difficult. Sometimes data comes from multiple sources and they need to be merged. And other times, data is in various formats that cannot coexist without compromising the integrity of your data. These issues are often the most challenging and time-consuming part of data work. I perform the complex operations needed to get your dataset in shape for your analysis while keeping a record of each operation to ensure reproducibility and repeatability.</p>
         </div>
         <div class="service-card">
           <h3>Understanding your data</h3>
-          <p>I have found that statistics is most empowering for the non-statistical subject-matter expert when they have a nuanced and rich understanding of their data. I explore the data thoroughly and explain intricate phenomenon and patterns using salient visualiztions that support an intuitive understanding of the final statistical model.</p>
+          <p>Often the most important part of data work. I have found that statistics is most empowering for the both the statistical and non-statistical expert when they have a nuanced and rich understanding of their data. I explore the data thoroughly and explain intricate phenomenon and patterns using salient visualizations that support an intuitive understanding of the final statistical model.</p>
         </div>
         <div class="service-card">
           <h3>Statistical modeling</h3>
-          <p>Using your study objective, design, and data collection methods, I conduct comparisons and build models that help explain the contributions of variables of interest to your outcomes. When study objectives are more open-ended, I conduct exploratory analyses governed by the expertise of you and your team producing potential hypotheses to explore further. I aim for transparent analyses clearly explaining and illustrating the final results while elucidating the strengths, limitations, potentials for bias and possible next steps.</p>
+          <p>Using your study objective, design, and data collection methods, I conduct comparisons and build models that help explain the contributions of variables of interest to your outcomes. When study objectives are more open-ended, I conduct exploratory analyses governed by the expertise of you and your team to produce potential hypotheses to explore further. I aim for transparent and intuitive analyses that explain and illustrate the final results while concurrently elucidating the strengths, limitations, potentials for bias and possible next steps.</p>
         </div>
         <div class="service-card">
           <h3>Proof-of-concept artificial intelligence & machine learning models</h3>
-          <p>If you would like to see if your data can power predictions and classifications, I can build preliminary artificial intelligence and machine learning models to help you get started. I can engineer features and provide insight into their associative, predictive and causal links to the outcome.</p>
+          <p>If you would like to see if your data can power predictions and classifications, I build preliminary artificial intelligence and machine learning models to help you get started. I  engineer features and provide insight into their associative, predictive and causal links to the outcome.</p>
         </div>
         <div class="service-card">
           <h3>Reporting and manuscript support</h3>
