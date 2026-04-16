@@ -178,29 +178,45 @@ a:hover { color: var(--mid); }
   max-width: 640px;
 }
 
-/* ---------- Services Grid ---------- */
+/* ---------- Services List (scrollable) ---------- */
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 0;
   margin-top: 1rem;
   border-top: 1px solid var(--pale);
+  max-height: 420px;        /* adjust to taste */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pale) transparent;
+}
+
+/* Scroll fade hint */
+.services-grid-wrapper {
+  position: relative;
+}
+
+.services-grid-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--section-alt-bg, white));
+  pointer-events: none;
 }
 
 .service-card {
-  padding: 1.8rem 1.6rem 1.8rem 0;
+  padding: 1.2rem 1.6rem 1.2rem 0;
   border-bottom: 1px solid var(--pale);
-}
-
-.service-card:not(:last-child) {
-  border-right: 1px solid var(--pale);
-  padding-right: 1.6rem;
+  border-right: none;       /* remove the old grid divider */
 }
 
 .service-card h3 {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   color: var(--black);
 }
 
