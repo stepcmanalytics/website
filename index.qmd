@@ -1,5 +1,6 @@
 ---
 title: ""
+pagetitle: "STEP-CM Analytics"
 format:
   html:
     theme: none
