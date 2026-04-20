@@ -7,6 +7,9 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
+
+<div style="max-width: 780px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4rem);">
+
 <style>
 body {
   padding-left: 100px !important;
@@ -227,7 +230,7 @@ ggplot(
 
 
 
-
+</div>
 
 
 
