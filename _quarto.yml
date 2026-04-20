@@ -5,7 +5,13 @@ project:
     - CNAME
 
 website:
-  title: "My Site"
+  title: "STEP-CM Analytics"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: B.AAJ-Understanding_your_data.qmd
+        text: Understanding Your Data
 
 format:
   html:
