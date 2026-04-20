@@ -1,0 +1,12 @@
+project:
+  type: default
+  output-dir: docs
+
+
+
+format:
+  html:
+    theme: none
+    css: styles.css
+    toc: false
+    page-layout: full

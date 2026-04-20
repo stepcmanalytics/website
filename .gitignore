@@ -1,0 +1,25 @@
+
+/.quarto/
+**/*.quarto_ipynb
+
+# R project files
+.Rproj.user
+*.Rproj
+.Rhistory
+.RData
+.Ruserdata
+.RData
+.Ruserdata
+
+
+# Quarto working files
+/.quarto/
+*_files/
+_site/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+SSH credentials
