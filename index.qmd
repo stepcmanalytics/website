@@ -65,7 +65,7 @@ format:
         </div>
         <div class="service-card">
           <h3>Understanding your data</h3>
-          <p>Often the most important part of data work. I have found that statistics is most empowering for both the statistical and non-statistical expert when they have a nuanced and rich understanding of their data. I explore the data thoroughly and explain intricate phenomenon and patterns using salient visualizations that support an intuitive understanding of the final statistical model. Click here for an example: <a href="B.AAJ-Understanding_your_data.html"></p>
+          <p>Often the most important part of data work. I have found that statistics is most empowering for both the statistical and non-statistical expert when they have a nuanced and rich understanding of their data. I explore the data thoroughly and explain intricate phenomenon and patterns using salient visualizations that support an intuitive understanding of the final statistical model. Click here for an example: <a href="B.AAJ-Understanding_your_data.html">Understanding your data</a></p>
         </div>
         <div class="service-card">
           <h3>Statistical modeling</h3>
