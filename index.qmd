@@ -54,7 +54,6 @@ format:
     <div class="section-label">Services</div>
     <div class="section-body">
       <h2>What We Do</h2>
-      <div class="services-grid-wrapper">
       <div class="services-grid">
         <div class="service-card">
           <h3>Study Design</h3>
@@ -66,7 +65,7 @@ format:
         </div>
         <div class="service-card">
           <h3>Understanding your data</h3>
-          <p>Often the most important parts of data work. I have found that statistics is most empowering for both the statistical and non-statistical expert when they have a nuanced and rich understanding of their data. I explore the data thoroughly and explain intricate phenomenon and patterns using salient visualizations that support an intuitive understanding of the final statistical model.</p>
+          <p>Often the most important part of data work. I have found that statistics is most empowering for both the statistical and non-statistical expert when they have a nuanced and rich understanding of their data. I explore the data thoroughly and explain intricate phenomenon and patterns using salient visualizations that support an intuitive understanding of the final statistical model. (Click here for an example [Understanding your data](B.AAJ-Understanding your data.html))</p>
         </div>
         <div class="service-card">
           <h3>Statistical modeling</h3>
@@ -86,7 +85,6 @@ format:
         </div>
       </div>
     </div>
-  </div>
   </div>
 </section>
 
