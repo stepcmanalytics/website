@@ -20,43 +20,129 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-html-734cb40618f438257b19a1e532635a32.min.css" rel="stylesheet" append-hash="true" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="nav-fixed quarto-light">
 
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">STEP-CM Analytics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./B.AAJ-Understanding_your_data.html" aria-current="page"> 
+<span class="menu-text">Understanding Your Data</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
 
-<header id="title-block-header">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Understanding your data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
 
 </header>
 
 
-<div style="max-width: 780px; margin: 0 auto; padding: 2rem 3rem;">
+<div style="max-width: 900; margin: 0 auto; padding: 2rem 3rem;">
 <p>Taking the time to understand your data thoroughly is arguably the most important part of any analysis. Sometimes sources of confusion can arise from the data itself, especially when it contradicts existing knowledge.</p>
-<h1 id="example">Example</h1>
+<section id="example" class="level1">
+<h1>Example</h1>
 <p>In an observational study, we were looking at the effects of two surgical interventions (A, B). The surgical interventions were applied across multiple rooms (1, 2, 3, 4). Hospital facilities experts in charge of environmental controls assured us that the rooms were identical in their ability to manage the environment. One thing that was known to fluctuate was humidity, which was affected by the outdoor humidity. When outdoor humidity rose, environmental controls responded by decreasing the humidity to keep humidity levels below a certain point. However when outdoor humidity fell, the room controls did not add humidity. Thus humidity was known to fall when it was dry outside. We thus made the decision to collect room humidity data.</p>
 <p>In our initial analysis, we noticed that % humidity in room 4, specifically for intervention B had lower humidities compared to intervention A in the same room and both interventions across the other rooms (see figure below). This was a cause for concern since if the rooms were identical, why was the humidity for one room for one intervention noticeably different from the others. Further, this could have been a signal that the rooms were, in fact, not identical. Our initial response was that there may be some kind of relationship or interaction between intervention B and room 4 that ultimately caused a drop in humidity. We prepared to account for this in our final model, potentially including room number as a covariate to account for any additional variation caused by differences between rooms.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img src="B.AAJ-Understanding_your_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center" width="672"></p>
+<figure class="figure">
+<p><img src="B.AAJ-Understanding_your_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -65,21 +151,20 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img src="B.AAJ-Understanding_your_data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center" width="1152"></p>
+<figure class="figure">
+<p><img src="B.AAJ-Understanding_your_data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 </div>
 
 
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-    tabsets.forEach(function(tabset) {
-      const tabby = new Tabby('#' + tabset.id);
-    });
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -178,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
         },
         interactive: true,
         interactiveBorder: 10,
-        theme: 'light-border',
+        theme: 'quarto',
         placement: 'bottom-start',
       };
       if (contentFn) {
@@ -478,6 +563,7 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+</div> <!-- /content -->
 
 
 

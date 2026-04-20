@@ -15,7 +15,7 @@ website:
 
 format:
   html:
-    theme: none
+    theme: default
     css: styles.css
     toc: false
     page-layout: full

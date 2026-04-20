@@ -9,7 +9,7 @@ editor_options:
 ---
 
 
-<div style="max-width: 780px; margin: 0 auto; padding: 2rem 3rem;">
+<div style="max-width: 900; margin: 0 auto; padding: 2rem 3rem;">
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, include = TRUE)
