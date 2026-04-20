@@ -8,10 +8,15 @@ website:
   title: "STEP-CM Analytics"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - href: B.AAJ-Understanding_your_data.qmd
-        text: Understanding Your Data
+      - text: "About"
+        href: index.html#about
+      - text: "Services"
+        href: index.html#services
+      - text: "Background"
+        href: index.html#credentials
+      - text: "Contact"
+        href: index.html#contact
+
 
 format:
   html:
