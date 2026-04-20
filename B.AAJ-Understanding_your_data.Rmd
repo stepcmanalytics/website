@@ -11,7 +11,7 @@ editor_options:
 body {
   padding-left: 100px !important;
   padding-right: 100px !important;
-  background-color: red !important;
+  background-color: #fafaf8 !important;
 }
 </style>
 
