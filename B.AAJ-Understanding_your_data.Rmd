@@ -7,6 +7,13 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
+<style>
+body {
+  padding-left: 100px !important;
+  padding-right: 100px !important;
+  background-color: red !important;
+}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, include = TRUE)
