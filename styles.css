@@ -292,3 +292,14 @@ a:hover { color: var(--mid); }
 
   .nav-links { gap: 1.2rem; }
 }
+
+
+
+
+.main-container {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}

@@ -3,6 +3,7 @@ title: "Understanding your data"
 output: 
   html_document:
     self_contained: true
+    css: styles.css
 editor_options: 
   chunk_output_type: console
 ---
