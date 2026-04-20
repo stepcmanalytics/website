@@ -8,8 +8,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-<div style="max-width: 780px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4rem);">
 
+<div style="max-width: 780px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem);">
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, include = TRUE)
