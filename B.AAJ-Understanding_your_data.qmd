@@ -10,13 +10,6 @@ editor_options:
 
 <div style="max-width: 780px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4rem);">
 
-<style>
-body {
-  padding-left: 100px !important;
-  padding-right: 100px !important;
-  background-color: #fafaf8 !important;
-}
-</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, include = TRUE)
