@@ -15,6 +15,7 @@ format:
 ---
 
 ```{=html}
+<!--
 <!-- NAV -->
 <nav class="site-nav">
   <strong><a href="#">STEP-CM Analytics</a></strong>
@@ -25,6 +26,7 @@ format:
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+-->
 
 <!-- HERO -->
 <section class="hero">
