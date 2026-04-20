@@ -312,6 +312,9 @@ a:hover { color: var(--mid); }
 }
 
 body {
-  padding-left: 40px;
-  padding-right: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
 }
