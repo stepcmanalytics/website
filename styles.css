@@ -303,3 +303,15 @@ a:hover { color: var(--mid); }
   padding-left: 40px;
   padding-right: 40px;
 }
+
+
+.container {
+  max-width: 900px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+body {
+  padding-left: 40px;
+  padding-right: 40px;
+}
