@@ -22,7 +22,7 @@
   --pad-x:   clamp(1.5rem, 5vw, 4rem);
 }
 
-html { font-size: 18px; scroll-behavior: smooth; }
+html { font-size: 20px; scroll-behavior: smooth; }
 
 body {
   font-family: var(--serif);
