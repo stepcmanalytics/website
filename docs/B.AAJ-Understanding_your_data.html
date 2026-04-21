@@ -68,6 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -126,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div style="max-width: 900; margin: 0 auto; padding: 2rem 3rem;">
 <div style="margin-bottom: 2rem;">
-<p><a href="index.html">← Back</a></p>
+<p><a href="index.html#service-understanding-example">← Back to Services</a></p>
 </div>
 <h1>
 Understanding Your Data
@@ -135,12 +138,12 @@ Understanding Your Data
 <section id="example" class="level1">
 <h1>Example</h1>
 <p>In an observational study, we were looking at the effects of two surgical interventions (A, B). The surgical interventions were applied across multiple rooms (1, 2, 3, 4). Hospital facilities experts in charge of environmental controls assured us that the rooms were identical in their ability to manage the environment. One thing that was known to fluctuate was humidity, which was affected by the outdoor humidity. When outdoor humidity rose, environmental controls responded by decreasing the humidity to keep humidity levels below a certain point. However when outdoor humidity fell, the room controls did not add humidity. Thus humidity was known to fall when it was dry outside. We thus made the decision to collect room humidity data.</p>
-<p>In our initial analysis, we noticed that % humidity in room 4, specifically for intervention B had lower humidities compared to intervention A in the same room and both interventions across the other rooms (see figure below). This was a cause for concern since if the rooms were identical, why was the humidity for one room for one intervention noticeably different from the others. Further, this could have been a signal that the rooms were, in fact, not identical. Our initial response was that there may be some kind of relationship or interaction between intervention B and room 4 that ultimately caused a drop in humidity. We prepared to account for this in our final model, potentially including room number as a covariate to account for any additional variation caused by differences between rooms.</p>
+<p>In our initial analysis, we noticed that % humidity in room 4, specifically for intervention B had lower humidities compared to intervention A in the same room and both interventions across the other rooms (see figure below). This was a cause for concern since if the rooms were identical, why was the humidity for one room for one intervention noticeably different from the others? Further, this could have been a signal that the rooms were, in fact, not identical. Our initial response was that there may be some kind of relationship or interaction between intervention B and room 4 that ultimately caused a drop in humidity. We prepared to account for this in our final model, potentially including room number as a covariate.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="B.AAJ-Understanding_your_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="B.AAJ-Understanding_your_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -156,7 +159,7 @@ Understanding Your Data
 </div>
 </div>
 <div style="margin-bottom: 2rem;">
-<p><a href="index.html">← Back</a></p>
+<p><a href="index.html">← Back to Services</a></p>
 </div>
 </section>
 </div>
@@ -569,4 +572,5 @@ Understanding Your Data
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

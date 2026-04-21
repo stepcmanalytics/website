@@ -1,18 +1,22 @@
 ---
 title: ""
-output: 
-  html_document:
-    self_contained: true
+format:
+  html:
     css: styles.css
-editor_options: 
-  chunk_output_type: console
+    page-layout: full
+    toc: false
+    smooth-scroll: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 ---
 
 
 <div style="max-width: 900; margin: 0 auto; padding: 2rem 3rem;">
 
 <div style="margin-bottom: 2rem;">
-  <a href="index.html">← Back</a>
+  <a href="index.html#service-understanding-example">← Back to Services</a>
 </div>
 
 <h1>Understanding Your Data</h1>
@@ -115,8 +119,9 @@ Taking the time to understand your data thoroughly is arguably the most importan
 
 In an observational study, we were looking at the effects of two surgical interventions (A, B). The surgical interventions were applied across multiple rooms (1, 2, 3, 4). Hospital facilities experts in charge of environmental controls assured us that the rooms were identical in their ability to manage the environment. One thing that was known to fluctuate was humidity, which was affected by the outdoor humidity. When outdoor humidity rose, environmental controls responded by decreasing the humidity to keep humidity levels below a certain point. However when outdoor humidity fell, the room controls did not add humidity. Thus humidity was known to fall when it was dry outside. We thus made the decision to collect room humidity data. 
 
-In our initial analysis, we noticed that % humidity in room 4, specifically for intervention B had lower humidities compared to intervention A in the same room and both interventions across the other rooms (see figure below). This was a cause for concern since if the rooms were identical, why was the humidity for one room for one intervention noticeably different from the others. Further, this could have been a signal that the rooms were, in fact, not identical. Our initial response was that there may be some kind of relationship or interaction between intervention B and room 4 that ultimately caused a drop in humidity. We prepared to account for this in our final model, potentially including room number as a covariate to account for any additional variation caused by differences between rooms.
-```{r, fig.align = "center"}
+In our initial analysis, we noticed that % humidity in room 4, specifically for intervention B had lower humidities compared to intervention A in the same room and both interventions across the other rooms (see figure below). This was a cause for concern since if the rooms were identical, why was the humidity for one room for one intervention noticeably different from the others? Further, this could have been a signal that the rooms were, in fact, not identical. Our initial response was that there may be some kind of relationship or interaction between intervention B and room 4 that ultimately caused a drop in humidity. We prepared to account for this in our final model, potentially including room number as a covariate.
+
+```{r, fig.align = "center", fig.height = 5, fig.width = 8}
 ggplot(
   sim_data, 
   aes(
@@ -227,7 +232,7 @@ ggplot(
 
 
 <div style="margin-bottom: 2rem;">
-  <a href="index.html">← Back</a>
+  <a href="index.html">← Back to Services</a>
 </div>
 
 
