@@ -3,11 +3,17 @@ title: "Data cleaning, merging and formatting"
 format:
   html:
     theme: flatly
-    highlight-style: tango
-    code-fold: true      # hides code by default but lets reader expand it
-    code-tools: true     # adds a button to show/hide all code
+    css: styles.css
+    toc: false
+    page-layout: full
 toc: true
 ---
+
+<div style="max-width: 900; margin: 0 auto; padding: 2rem 3rem;">
+
+<div style="margin-bottom: 2rem;">
+  <a href="index.html#service-cleaning-example">← Back to Services</a>
+</div>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = TRUE)
@@ -194,3 +200,10 @@ combined %>%
   tab_header(title = "Combined dataset")
   
 ```
+
+
+<div style="margin-bottom: 2rem;">
+  <a href="index.html#service-understanding-example">← Back to Services</a>
+</div>
+
+</div>
