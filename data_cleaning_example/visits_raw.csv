@@ -1,0 +1,14 @@
+Visit_ID,Pt_ID,VisitDate,Reason,Vet,Fee_charged,Outcome,FollowUp_Required
+V001,P001,2024-01-15,Annual wellness,Dr. Patel,$185.00 ,Healthy,No
+V002,P002,February 3 2024,Vomiting,dr. chen,200,Gastroenteritis - treated,Yes
+V003,P003,2024-01-22,Lameness,Dr. Patel,$340.50 ,Referred to ortho,Yes
+V004,P004,03/10/2024,Dental cleaning,Dr. Osei,"$275,00",Completed,No
+V005,P005,2024-02-18,Annual wellness,DR. CHEN,$185.00 ,Healthy,No
+V006,P006,2024-01-30,Weight loss,Dr. Patel,$210.00 ,Hyperthyroidism suspected,Yes
+V007,P007,March 12 2024,Skin irritation,Dr. Osei,$155.00 ,Allergies - treatment started,Yes
+V008,P002,2024-03-01,Follow-up,dr. chen,$95.00 ,Resolved,No
+V009,P008,2024-02-25,First visit / neuter consult,Dr. Patel,,Scheduled for surgery,Yes
+V010,P010,2024-03-08,Limping,Dr. Osei,$220.00 ,Soft tissue injury,Yes
+V011,P011,15/03/2024,Annual wellness,Dr. Patel,$185.00 ,Healthy,No
+V012,P099,2024-03-20,Emergency - trauma,Dr. Chen,$520.00 ,Stabilized,Yes
+V013,P003,2024-03-25,Ortho follow-up,Dr. Patel,$310.00 ,Surgery recommended,Yes

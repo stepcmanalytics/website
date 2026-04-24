@@ -1,0 +1,13 @@
+PatientID,AnimalName,Species,Breed,DOB,Sex,OwnerID,Weight_kg,Vaccinated
+P001,Biscuit,dog,Labrador Retriever,2019-04-12,M,O011,28.4,Yes
+P002,Luna,Cat,domestic shorthair,14/07/2020,F,O002,4.1,yes
+P002,Luna,Cat,domestic shorthair,14/07/2020,F,O002,4.1,yes
+P003,Max,dog,German Shepherd,2018-11-03,Male,O003,34.7,No
+P004,Whiskers,cat,Persian,March 5 2021,F,O004,,YES
+P005,Rocky,Dog,Bulldog,2020-06-22,M,O005,24.9,No
+P006,Cleo,cat,Siamese,2017-09-15,Female,O006,3.8,yes
+P007,Buddy,dog,Golden Retriever,07-2019,M,O007,32.1,Yes
+P008,Mochi,cat,Maine Coon,2022-01-30,F,O008,5.6,
+P009,Zeus,Dog,Rottweiler,2016-03-18,M,O009,47.2,No
+P010,Nala,dog,Beagle,2021-08-09,F,O010,10.3,Yes
+P011,Shadow,DOG,Border Collie,2019-12-01,m,O011,19.8,yes

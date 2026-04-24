@@ -1,0 +1,196 @@
+---
+title: "Patient visit records"
+format:
+  html:
+    theme: flatly
+    highlight-style: tango
+    code-fold: true      # hides code by default but lets reader expand it
+    code-tools: true     # adds a button to show/hide all code
+toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = TRUE)
+
+pacman::p_load(
+  ggplot2, 
+  janitor, 
+  dplyr, 
+  tidyr,
+  tidyverse, 
+  ggpubr, 
+  lubridate, 
+  gt, 
+  bslib
+)
+```
+
+```{r, echo = FALSE, include = FALSE}
+patient_info_data = read.csv(paste0(here::here(), "/data_cleaning_example/patients_raw.csv")) %>% clean_names()
+
+visit_info_data = read.csv(paste0(here::here(), "/data_cleaning_example/visits_raw.csv")) %>% clean_names
+```
+
+# Introduction
+
+In this example, there are two synthetic datasets: patient information dataset and visit information dataset. The patient information datasetincludes information like name, species, breed, date of birth, sex, weight and vaccination status. The visit information dataset provides information about the patient's visit to the veterinarian. Data collected in this dataset include date of visit, presenting complaint, the patient's veterinarian for that visit, fees and outcome.
+
+Suppose we wanted to get an idea of the presenting complaints that the clinic encountered. This would effect personnel training, infection control policies and inventory management. We could analyze just the visit information dataset but, at best, the analysis would be incomplete. Afterall, veterinary clinics are multispecies in nature. Determining the most common presentation is often not enough information. We need to understand these presentations across species, sex, age groups and breed. This requires that visit information data be merged with the patient information dataset.
+
+Patient and visit information datasets are provided below. Upon visual inspection of patient information data, we notice that there are heterogeneous formats within each column. For example, under the *species* column, a dog is designated as "dog", "DOG" or "Dog". *dob* (date of birth) has dates in the format "YYYY-MM-DD", "DD/MM/YYYY", "MMMM DDDD YYYY", "MM-YYYY". There are also multiple ways of designating *sex*. Females are designated by "F" or "Female." Males are designated by "M", "m", or "Male." And in the *vaccinated* column, a vaccinated animal can be designated by "Yes", "yes", "YES". Further, both *weight* and *vaccinated* have missing data.
+
+For the visit information dataset, we can notice similar heterogeneities in data formats for *visit_date* and *vet*. There is also a likely error under *fee_charged*: \$275,00 for Visit_ID = V004 as well as missing data (Visit_ID = V009).
+
+```{r, echo = FALSE}
+navset_tab(
+  nav_panel(
+    "Patients",
+    patient_info_data %>%
+      gt() %>%
+      tab_header(title = "Patient information data")
+  ),
+  nav_panel(
+    "Visits",
+    visit_info_data %>%
+      gt() %>%
+      tab_header(title = "Visit information data")
+  )
+)
+```
+
+# Cleaning the patient information dataset
+
+The *species, breed, sex* and *vaccinated* columns would all benefit by being in a single case. In this example, I convert all to lower case.
+
+```{r Convert all to lowercase, include = TRUE}
+patient_info_data <- 
+  patient_info_data %>%
+  mutate(
+    species = tolower(species), 
+    breed = tolower(breed), 
+    sex = tolower(sex),
+    vaccinated = tolower(vaccinated)
+  )
+```
+
+The *dob* column suffers from multiple formats. In the script below, I use the function parse_date_time from the lubridate package to convert them all to a single date format. Notice that for *patient_id* = P007, the original *dob* 07-2019 was converted to 2019-07-20. The original date of birth provided did not indicate which day the birthday was on. In cases like these, I would flag this and bring it to the attention of the subject-matter experts, who may go into their records to find the exact birthday. If unavailable, I would seek a consensus among the clinical experts that assuming a birthday of 2019-07-20 does not create a significant clinical difference when compared to another birthday in the month of July.
+
+```{r}
+patient_info_data <- 
+  patient_info_data %>%
+  mutate(
+    dob = parse_date_time(dob, orders = c("ymd", "dmy", "mdy", "my"))
+  )
+```
+
+The *sex* column was partially addressed earlier by converting all uppercase letters to lowercase. However, while most sex designations are single letter, there are two that spell out male and female. This is addressed below.
+
+```{r}
+patient_info_data <- 
+  patient_info_data %>%
+  mutate(
+    sex = 
+      case_when(
+        sex == "male" ~ "m", 
+        sex == "female" ~ "f", 
+        .default = sex
+      )
+  )
+```
+
+For the *weight_kg* and *vaccinated* columns, there are missing values. In both cases, I would bring this to the attention of the subject-matter experts before attempting imputation. The patient with the missing weight (P004) received a dental cleaning. From my own clinical experience, I know dental cleanings in dogs and cats are always performed under general anesthesia (in contrast to horses, which are done in standing). It is certainty that a patient undergoing general anesthesia had a weight attained by the veterinarian. It is likely very possible to attain the patient's weight by exploring the medical record further or contacting the primary veterinarian. If that is not possible, I would ask the subject-matter experts to provide a weight they felt was appropriate for this breed, sex, and age of cat along with any other comorbidities we may know about this cat. Imputation would be my last resort.
+
+Similarly, I would bring the patient with the missing vaccination status to the attention of the subject-matter experts. Again, vaccination records may exist in the medical record and could be found with further investigation. Sometimes vaccination status is left blank because records are still being transferred from the previous veterinarian or a shelter. If the cat was from a shelter, it most likely has been vaccinated. According to the visit information dataset, the cat's visit occurred on 2024-02-25. It was the cat's first visit and had a neuter consult and was subsequently scheduled for surgery, most likely to get neutered. It was born on 2022-01-30. The cat's first visit occurred more than two years after its date of birth. Again, leaning on my own clinical experience, this is not a shelter cat as most shelters will neuter (one main reason is population control as cats can reproduce rapidly) and vaccinate cats. Another option is to contact the primary veterinarian's office. We may find that empty fields may have a meaning to that specific clinic. In the absence of any other information, I would err on the side of this cat's vaccination status being unvaccinated, or simply unknown.
+
+For this example, for both cases of missing data above, I will leave as is.
+
+Another thing to note in the patient information dataset is that there is a repeat row of patient P002. This is something I would discuss with the subject-matter experts. But the two rows are completely identical, and likely shows up twice because that patient had two visits (as logged in the visit information dataset). For my purposes, this extra row is not needed.
+
+```{r}
+patient_info_data = unique(patient_info_data)
+```
+
+# Cleaning the visit information dataset
+
+The *visit_date* column contains dates with various formats. Again, the parse_date_time function in the lubridate package handles this very well.
+
+```{r}
+visit_info_data <- 
+  visit_info_data %>%
+  mutate(
+    visit_date = parse_date_time(visit_date, orders = c("ymd", "B d Y", "dmy"))
+  )
+```
+
+The *vet* column contains veterinarian names. I will make sure that they all have similar formats. Further, I have found it useful when working with names to make sure they are formatted like actual names. It can help prevent the extra step of re-formatting names when reporting out.
+
+```{r}
+visit_info_data <- 
+  visit_info_data %>%
+  mutate(
+    vet = str_to_title(vet)
+  )
+```
+
+The missing value in the *fee_charged* column could be determined by contacting the primary veterinarian. If that is not possible, this value could be estimated by consulting with the appropriate subject-matter experts or researching various clinic websites that are similar to this clinic.
+
+There is very little need for cleaning for the *outcome* and *follow_up_required* columns. In this case, I may just convert all values to lowercase letters in anticipation of having to append new data to the current dataset.
+
+```{r}
+visit_info_data <-
+  visit_info_data %>%
+  mutate(
+    outcome = str_to_lower(outcome), 
+    follow_up_required = str_to_lower(follow_up_required)
+  )
+```
+
+One final thing to investigate regarding the visit information dataset is that there is a patient with the ID P099, non-existent on the patient information dataset. The closest patient ID in the patient information dataset is P009. This is something to bring to the attention of the subject-matter experts and investigate whether this is a type or indeed a different patient. In this case, this is a typo. The correction is made below.
+
+```{r}
+visit_info_data = 
+  visit_info_data %>%
+  mutate(
+    pt_id = 
+      case_when(
+        pt_id == "P099" ~ "P009", 
+        .default = pt_id
+      )
+  )
+```
+
+The cleaned datasets are shown below.
+
+```{r, echo = FALSE}
+navset_tab(
+  nav_panel(
+    "Patients",
+    patient_info_data %>%
+      gt() %>%
+      tab_header(title = "Patient information data")
+  ),
+  nav_panel(
+    "Visits",
+    visit_info_data %>%
+      gt() %>%
+      tab_header(title = "Visit information data")
+  )
+)
+```
+
+# Merging the datasets
+
+The operations to merge the two datasets are shown below.
+
+```{r}
+combined = left_join(patient_info_data, visit_info_data, by = c("patient_id" = "pt_id"))
+```
+
+The final merged dataset is provided below:
+
+```{r}
+combined %>%
+  gt() %>%
+  tab_header(title = "Combined dataset")
+  
+```

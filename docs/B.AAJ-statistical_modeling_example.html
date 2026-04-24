@@ -1,0 +1,4137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Patient visit records – STEP-CM Analytics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0a95de2c3be981c2e03029825b16c585.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b526502554a5f4740957a52d7389eb17.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">STEP-CM Analytics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#about"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#services"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#credentials"> 
+<span class="menu-text">Background</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#contact"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#cleaning-the-patient-information-dataset" id="toc-cleaning-the-patient-information-dataset" class="nav-link" data-scroll-target="#cleaning-the-patient-information-dataset">Cleaning the patient information dataset</a></li>
+  <li><a href="#cleaning-the-visit-information-dataset" id="toc-cleaning-the-visit-information-dataset" class="nav-link" data-scroll-target="#cleaning-the-visit-information-dataset">Cleaning the visit information dataset</a></li>
+  <li><a href="#merging-the-datasets" id="toc-merging-the-datasets" class="nav-link" data-scroll-target="#merging-the-datasets">Merging the datasets</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Patient visit records</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this example, there are two synthetic datasets: patient information dataset and visit information dataset. The patient information datasetincludes information like name, species, breed, date of birth, sex, weight and vaccination status. The visit information dataset provides information about the patient’s visit to the veterinarian. Data collected in this dataset include date of visit, presenting complaint, the patient’s veterinarian for that visit, fees and outcome.</p>
+<p>Suppose we wanted to get an idea of the presenting complaints that the clinic encountered. This would effect personnel training, infection control policies and inventory management. We could analyze just the visit information dataset but, at best, the analysis would be incomplete. Afterall, veterinary clinics are multispecies in nature. Determining the most common presentation is often not enough information. We need to understand these presentations across species, sex, age groups and breed. This requires that visit information data be merged with the patient information dataset.</p>
+<p>Patient and visit information datasets are provided below. Upon visual inspection of patient information data, we notice that there are heterogeneous formats within each column. For example, under the <em>species</em> column, a dog is designated as “dog”, “DOG” or “Dog”. <em>dob</em> (date of birth) has dates in the format “YYYY-MM-DD”, “DD/MM/YYYY”, “MMMM DDDD YYYY”, “MM-YYYY”. There are also multiple ways of designating <em>sex</em>. Females are designated by “F” or “Female.” Males are designated by “M”, “m”, or “Male.” And in the <em>vaccinated</em> column, a vaccinated animal can be designated by “Yes”, “yes”, “YES”. Further, both <em>weight</em> and <em>vaccinated</em> have missing data.</p>
+<p>For the visit information dataset, we can notice similar heterogeneities in data formats for <em>visit_date</em> and <em>vet</em>. There is also a likely error under <em>fee_charged</em>: $275,00 for Visit_ID = V004 as well as missing data (Visit_ID = V009).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabbable">
+<ul class="nav nav-tabs" data-tabsetid="2920">
+<li class="active">
+<a href="#tab-2920-1" data-toggle="tab" data-bs-toggle="tab" data-value="Patients">Patients</a>
+</li>
+<li>
+<a href="#tab-2920-2" data-toggle="tab" data-bs-toggle="tab" data-value="Visits">Visits</a>
+</li>
+</ul>
+<div class="tab-content" data-tabsetid="2920">
+<div class="tab-pane active" data-value="Patients" id="tab-2920-1">
+<div id="phxvqeagne" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#phxvqeagne table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#phxvqeagne thead, #phxvqeagne tbody, #phxvqeagne tfoot, #phxvqeagne tr, #phxvqeagne td, #phxvqeagne th {
+  border-style: none;
+}
+
+#phxvqeagne p {
+  margin: 0;
+  padding: 0;
+}
+
+#phxvqeagne .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#phxvqeagne .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#phxvqeagne .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#phxvqeagne .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#phxvqeagne .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#phxvqeagne .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#phxvqeagne .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#phxvqeagne .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#phxvqeagne .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#phxvqeagne .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#phxvqeagne .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#phxvqeagne .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#phxvqeagne .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#phxvqeagne .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#phxvqeagne .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phxvqeagne .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#phxvqeagne .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#phxvqeagne .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#phxvqeagne .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phxvqeagne .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#phxvqeagne .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phxvqeagne .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#phxvqeagne .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phxvqeagne .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#phxvqeagne .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phxvqeagne .gt_left {
+  text-align: left;
+}
+
+#phxvqeagne .gt_center {
+  text-align: center;
+}
+
+#phxvqeagne .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#phxvqeagne .gt_font_normal {
+  font-weight: normal;
+}
+
+#phxvqeagne .gt_font_bold {
+  font-weight: bold;
+}
+
+#phxvqeagne .gt_font_italic {
+  font-style: italic;
+}
+
+#phxvqeagne .gt_super {
+  font-size: 65%;
+}
+
+#phxvqeagne .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#phxvqeagne .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#phxvqeagne .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#phxvqeagne .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#phxvqeagne .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#phxvqeagne .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#phxvqeagne .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#phxvqeagne .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#phxvqeagne div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="9" class="gt_heading gt_title gt_font_normal gt_bottom_border">Patient information data</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="patient_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">patient_id</th>
+<th id="animal_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">animal_name</th>
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="breed" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">breed</th>
+<th id="dob" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">dob</th>
+<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sex</th>
+<th id="owner_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">owner_id</th>
+<th id="weight_kg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">weight_kg</th>
+<th id="vaccinated" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">vaccinated</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P001</td>
+<td class="gt_row gt_left" headers="animal_name">Biscuit</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">Labrador Retriever</td>
+<td class="gt_row gt_left" headers="dob">2019-04-12</td>
+<td class="gt_row gt_left" headers="sex">M</td>
+<td class="gt_row gt_left" headers="owner_id">O011</td>
+<td class="gt_row gt_right" headers="weight_kg">28.4</td>
+<td class="gt_row gt_left" headers="vaccinated">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P002</td>
+<td class="gt_row gt_left" headers="animal_name">Luna</td>
+<td class="gt_row gt_left" headers="species">Cat</td>
+<td class="gt_row gt_left" headers="breed">domestic shorthair</td>
+<td class="gt_row gt_left" headers="dob">14/07/2020</td>
+<td class="gt_row gt_left" headers="sex">F</td>
+<td class="gt_row gt_left" headers="owner_id">O002</td>
+<td class="gt_row gt_right" headers="weight_kg">4.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P002</td>
+<td class="gt_row gt_left" headers="animal_name">Luna</td>
+<td class="gt_row gt_left" headers="species">Cat</td>
+<td class="gt_row gt_left" headers="breed">domestic shorthair</td>
+<td class="gt_row gt_left" headers="dob">14/07/2020</td>
+<td class="gt_row gt_left" headers="sex">F</td>
+<td class="gt_row gt_left" headers="owner_id">O002</td>
+<td class="gt_row gt_right" headers="weight_kg">4.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P003</td>
+<td class="gt_row gt_left" headers="animal_name">Max</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">German Shepherd</td>
+<td class="gt_row gt_left" headers="dob">2018-11-03</td>
+<td class="gt_row gt_left" headers="sex">Male</td>
+<td class="gt_row gt_left" headers="owner_id">O003</td>
+<td class="gt_row gt_right" headers="weight_kg">34.7</td>
+<td class="gt_row gt_left" headers="vaccinated">No</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P004</td>
+<td class="gt_row gt_left" headers="animal_name">Whiskers</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">Persian</td>
+<td class="gt_row gt_left" headers="dob">March 5 2021</td>
+<td class="gt_row gt_left" headers="sex">F</td>
+<td class="gt_row gt_left" headers="owner_id">O004</td>
+<td class="gt_row gt_right" headers="weight_kg">NA</td>
+<td class="gt_row gt_left" headers="vaccinated">YES</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P005</td>
+<td class="gt_row gt_left" headers="animal_name">Rocky</td>
+<td class="gt_row gt_left" headers="species">Dog</td>
+<td class="gt_row gt_left" headers="breed">Bulldog</td>
+<td class="gt_row gt_left" headers="dob">2020-06-22</td>
+<td class="gt_row gt_left" headers="sex">M</td>
+<td class="gt_row gt_left" headers="owner_id">O005</td>
+<td class="gt_row gt_right" headers="weight_kg">24.9</td>
+<td class="gt_row gt_left" headers="vaccinated">No</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P006</td>
+<td class="gt_row gt_left" headers="animal_name">Cleo</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">Siamese</td>
+<td class="gt_row gt_left" headers="dob">2017-09-15</td>
+<td class="gt_row gt_left" headers="sex">Female</td>
+<td class="gt_row gt_left" headers="owner_id">O006</td>
+<td class="gt_row gt_right" headers="weight_kg">3.8</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P007</td>
+<td class="gt_row gt_left" headers="animal_name">Buddy</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">Golden Retriever</td>
+<td class="gt_row gt_left" headers="dob">07-2019</td>
+<td class="gt_row gt_left" headers="sex">M</td>
+<td class="gt_row gt_left" headers="owner_id">O007</td>
+<td class="gt_row gt_right" headers="weight_kg">32.1</td>
+<td class="gt_row gt_left" headers="vaccinated">Yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P008</td>
+<td class="gt_row gt_left" headers="animal_name">Mochi</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">Maine Coon</td>
+<td class="gt_row gt_left" headers="dob">2022-01-30</td>
+<td class="gt_row gt_left" headers="sex">F</td>
+<td class="gt_row gt_left" headers="owner_id">O008</td>
+<td class="gt_row gt_right" headers="weight_kg">5.6</td>
+<td class="gt_row gt_left" headers="vaccinated"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P009</td>
+<td class="gt_row gt_left" headers="animal_name">Zeus</td>
+<td class="gt_row gt_left" headers="species">Dog</td>
+<td class="gt_row gt_left" headers="breed">Rottweiler</td>
+<td class="gt_row gt_left" headers="dob">2016-03-18</td>
+<td class="gt_row gt_left" headers="sex">M</td>
+<td class="gt_row gt_left" headers="owner_id">O009</td>
+<td class="gt_row gt_right" headers="weight_kg">47.2</td>
+<td class="gt_row gt_left" headers="vaccinated">No</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P010</td>
+<td class="gt_row gt_left" headers="animal_name">Nala</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">Beagle</td>
+<td class="gt_row gt_left" headers="dob">2021-08-09</td>
+<td class="gt_row gt_left" headers="sex">F</td>
+<td class="gt_row gt_left" headers="owner_id">O010</td>
+<td class="gt_row gt_right" headers="weight_kg">10.3</td>
+<td class="gt_row gt_left" headers="vaccinated">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P011</td>
+<td class="gt_row gt_left" headers="animal_name">Shadow</td>
+<td class="gt_row gt_left" headers="species">DOG</td>
+<td class="gt_row gt_left" headers="breed">Border Collie</td>
+<td class="gt_row gt_left" headers="dob">2019-12-01</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O011</td>
+<td class="gt_row gt_right" headers="weight_kg">19.8</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="tab-pane" data-value="Visits" id="tab-2920-2">
+<div id="mgnrjsvbsm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mgnrjsvbsm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mgnrjsvbsm thead, #mgnrjsvbsm tbody, #mgnrjsvbsm tfoot, #mgnrjsvbsm tr, #mgnrjsvbsm td, #mgnrjsvbsm th {
+  border-style: none;
+}
+
+#mgnrjsvbsm p {
+  margin: 0;
+  padding: 0;
+}
+
+#mgnrjsvbsm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mgnrjsvbsm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mgnrjsvbsm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mgnrjsvbsm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mgnrjsvbsm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mgnrjsvbsm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mgnrjsvbsm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mgnrjsvbsm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mgnrjsvbsm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mgnrjsvbsm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mgnrjsvbsm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mgnrjsvbsm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mgnrjsvbsm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mgnrjsvbsm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mgnrjsvbsm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgnrjsvbsm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mgnrjsvbsm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mgnrjsvbsm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mgnrjsvbsm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgnrjsvbsm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mgnrjsvbsm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgnrjsvbsm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mgnrjsvbsm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgnrjsvbsm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgnrjsvbsm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgnrjsvbsm .gt_left {
+  text-align: left;
+}
+
+#mgnrjsvbsm .gt_center {
+  text-align: center;
+}
+
+#mgnrjsvbsm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mgnrjsvbsm .gt_font_normal {
+  font-weight: normal;
+}
+
+#mgnrjsvbsm .gt_font_bold {
+  font-weight: bold;
+}
+
+#mgnrjsvbsm .gt_font_italic {
+  font-style: italic;
+}
+
+#mgnrjsvbsm .gt_super {
+  font-size: 65%;
+}
+
+#mgnrjsvbsm .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mgnrjsvbsm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mgnrjsvbsm .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mgnrjsvbsm .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mgnrjsvbsm .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mgnrjsvbsm .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mgnrjsvbsm .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mgnrjsvbsm .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mgnrjsvbsm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Visit information data</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="visit_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">visit_id</th>
+<th id="pt_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">pt_id</th>
+<th id="visit_date" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">visit_date</th>
+<th id="reason" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">reason</th>
+<th id="vet" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">vet</th>
+<th id="fee_charged" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">fee_charged</th>
+<th id="outcome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">outcome</th>
+<th id="follow_up_required" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">follow_up_required</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V001</td>
+<td class="gt_row gt_left" headers="pt_id">P001</td>
+<td class="gt_row gt_left" headers="visit_date">2024-01-15</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">Healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">No</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V002</td>
+<td class="gt_row gt_left" headers="pt_id">P002</td>
+<td class="gt_row gt_left" headers="visit_date">February 3 2024</td>
+<td class="gt_row gt_left" headers="reason">Vomiting</td>
+<td class="gt_row gt_left" headers="vet">dr. chen</td>
+<td class="gt_row gt_right" headers="fee_charged">200</td>
+<td class="gt_row gt_left" headers="outcome">Gastroenteritis - treated</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V003</td>
+<td class="gt_row gt_left" headers="pt_id">P003</td>
+<td class="gt_row gt_left" headers="visit_date">2024-01-22</td>
+<td class="gt_row gt_left" headers="reason">Lameness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$340.50</td>
+<td class="gt_row gt_left" headers="outcome">Referred to ortho</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V004</td>
+<td class="gt_row gt_left" headers="pt_id">P004</td>
+<td class="gt_row gt_left" headers="visit_date">03/10/2024</td>
+<td class="gt_row gt_left" headers="reason">Dental cleaning</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$275,00</td>
+<td class="gt_row gt_left" headers="outcome">Completed</td>
+<td class="gt_row gt_left" headers="follow_up_required">No</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V005</td>
+<td class="gt_row gt_left" headers="pt_id">P005</td>
+<td class="gt_row gt_left" headers="visit_date">2024-02-18</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">DR. CHEN</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">Healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">No</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V006</td>
+<td class="gt_row gt_left" headers="pt_id">P006</td>
+<td class="gt_row gt_left" headers="visit_date">2024-01-30</td>
+<td class="gt_row gt_left" headers="reason">Weight loss</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$210.00</td>
+<td class="gt_row gt_left" headers="outcome">Hyperthyroidism suspected</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V007</td>
+<td class="gt_row gt_left" headers="pt_id">P007</td>
+<td class="gt_row gt_left" headers="visit_date">March 12 2024</td>
+<td class="gt_row gt_left" headers="reason">Skin irritation</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$155.00</td>
+<td class="gt_row gt_left" headers="outcome">Allergies - treatment started</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V008</td>
+<td class="gt_row gt_left" headers="pt_id">P002</td>
+<td class="gt_row gt_left" headers="visit_date">2024-03-01</td>
+<td class="gt_row gt_left" headers="reason">Follow-up</td>
+<td class="gt_row gt_left" headers="vet">dr. chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$95.00</td>
+<td class="gt_row gt_left" headers="outcome">Resolved</td>
+<td class="gt_row gt_left" headers="follow_up_required">No</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V009</td>
+<td class="gt_row gt_left" headers="pt_id">P008</td>
+<td class="gt_row gt_left" headers="visit_date">2024-02-25</td>
+<td class="gt_row gt_left" headers="reason">First visit / neuter consult</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged"></td>
+<td class="gt_row gt_left" headers="outcome">Scheduled for surgery</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V010</td>
+<td class="gt_row gt_left" headers="pt_id">P010</td>
+<td class="gt_row gt_left" headers="visit_date">2024-03-08</td>
+<td class="gt_row gt_left" headers="reason">Limping</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$220.00</td>
+<td class="gt_row gt_left" headers="outcome">Soft tissue injury</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V011</td>
+<td class="gt_row gt_left" headers="pt_id">P011</td>
+<td class="gt_row gt_left" headers="visit_date">15/03/2024</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">Healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">No</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V012</td>
+<td class="gt_row gt_left" headers="pt_id">P099</td>
+<td class="gt_row gt_left" headers="visit_date">2024-03-20</td>
+<td class="gt_row gt_left" headers="reason">Emergency - trauma</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$520.00</td>
+<td class="gt_row gt_left" headers="outcome">Stabilized</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V013</td>
+<td class="gt_row gt_left" headers="pt_id">P003</td>
+<td class="gt_row gt_left" headers="visit_date">2024-03-25</td>
+<td class="gt_row gt_left" headers="reason">Ortho follow-up</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$310.00</td>
+<td class="gt_row gt_left" headers="outcome">Surgery recommended</td>
+<td class="gt_row gt_left" headers="follow_up_required">Yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cleaning-the-patient-information-dataset" class="level1">
+<h1>Cleaning the patient information dataset</h1>
+<p>The <em>species, breed, sex</em> and <em>vaccinated</em> columns would all benefit by being in a single case. In this example, I convert all to lower case.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">tolower</span>(species), </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">breed =</span> <span class="fu">tolower</span>(breed), </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">tolower</span>(sex),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">vaccinated =</span> <span class="fu">tolower</span>(vaccinated)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The <em>dob</em> column suffers from multiple formats. In the script below, I use the function parse_date_time from the lubridate package to convert them all to a single date format. Notice that for <em>patient_id</em> = P007, the original <em>dob</em> 07-2019 was converted to 2019-07-20. The original date of birth provided did not indicate which day the birthday was on. In cases like these, I would flag this and bring it to the attention of the subject-matter experts, who may go into their records to find the exact birthday. If unavailable, I would seek a consensus among the clinical experts that assuming a birthday of 2019-07-20 does not create a significant clinical difference when compared to another birthday in the month of July.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">dob =</span> <span class="fu">parse_date_time</span>(dob, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"ymd"</span>, <span class="st">"dmy"</span>, <span class="st">"mdy"</span>, <span class="st">"my"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The <em>sex</em> column was partially addressed earlier by converting all uppercase letters to lowercase. However, while most sex designations are single letter, there are two that spell out male and female. This is addressed below.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="st">"m"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="st">"f"</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> sex</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>For the <em>weight_kg</em> and <em>vaccinated</em> columns, there are missing values. In both cases, I would bring this to the attention of the subject-matter experts before attempting imputation. The patient with the missing weight (P004) received a dental cleaning. From my own clinical experience, I know dental cleanings in dogs and cats are always performed under general anesthesia (in contrast to horses, which are done in standing). It is certainty that a patient undergoing general anesthesia had a weight attained by the veterinarian. It is likely very possible to attain the patient’s weight by exploring the medical record further or contacting the primary veterinarian. If that is not possible, I would ask the subject-matter experts to provide a weight they felt was appropriate for this breed, sex, and age of cat along with any other comorbidities we may know about this cat. Imputation would be my last resort.</p>
+<p>Similarly, I would bring the patient with the missing vaccination status to the attention of the subject-matter experts. Again, vaccination records may exist in the medical record and could be found with further investigation. Sometimes vaccination status is left blank because records are still being transferred from the previous veterinarian or a shelter. If the cat was from a shelter, it most likely has been vaccinated. According to the visit information dataset, the cat’s visit occurred on 2024-02-25. It was the cat’s first visit and had a neuter consult and was subsequently scheduled for surgery, most likely to get neutered. It was born on 2022-01-30. The cat’s first visit occurred more than two years after its date of birth. Again, leaning on my own clinical experience, this is not a shelter cat as most shelters will neuter (one main reason is population control as cats can reproduce rapidly) and vaccinate cats. Another option is to contact the primary veterinarian’s office. We may find that empty fields may have a meaning to that specific clinic. In the absence of any other information, I would err on the side of this cat’s vaccination status being unvaccinated, or simply unknown.</p>
+<p>For this example, for both cases of missing data above, I will leave as is.</p>
+<p>Another thing to note in the patient information dataset is that there is a repeat row of patient P002. This is something I would discuss with the subject-matter experts. But the two rows are completely identical, and likely shows up twice because that patient had two visits (as logged in the visit information dataset). For my purposes, this extra row is not needed.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">=</span> <span class="fu">unique</span>(patient_info_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="cleaning-the-visit-information-dataset" class="level1">
+<h1>Cleaning the visit information dataset</h1>
+<p>The <em>visit_date</em> column contains dates with various formats. Again, the parse_date_time function in the lubridate package handles this very well.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">visit_date =</span> <span class="fu">parse_date_time</span>(visit_date, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"ymd"</span>, <span class="st">"B d Y"</span>, <span class="st">"dmy"</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The <em>vet</em> column contains veterinarian names. I will make sure that they all have similar formats. Further, I have found it useful when working with names to make sure they are formatted like actual names. It can help prevent the extra step of re-formatting names when reporting out.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">vet =</span> <span class="fu">str_to_title</span>(vet)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The missing value in the <em>fee_charged</em> column could be determined by contacting the primary veterinarian. If that is not possible, this value could be estimated by consulting with the appropriate subject-matter experts or researching various clinic websites that are similar to this clinic.</p>
+<p>There is very little need for cleaning for the <em>outcome</em> and <em>follow_up_required</em> columns. In this case, I may just convert all values to lowercase letters in anticipation of having to append new data to the current dataset.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">str_to_lower</span>(outcome), </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">follow_up_required =</span> <span class="fu">str_to_lower</span>(follow_up_required)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>One final thing to investigate regarding the visit information dataset is that there is a patient with the ID P099, non-existent on the patient information dataset. The closest patient ID in the patient information dataset is P009. This is something to bring to the attention of the subject-matter experts and investigate whether this is a type or indeed a different patient. In this case, this is a typo. The correction is made below.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">=</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt_id =</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        pt_id <span class="sc">==</span> <span class="st">"P099"</span> <span class="sc">~</span> <span class="st">"P009"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> pt_id</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The cleaned datasets are shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabbable">
+<ul class="nav nav-tabs" data-tabsetid="5219">
+<li class="active">
+<a href="#tab-5219-1" data-toggle="tab" data-bs-toggle="tab" data-value="Patients">Patients</a>
+</li>
+<li>
+<a href="#tab-5219-2" data-toggle="tab" data-bs-toggle="tab" data-value="Visits">Visits</a>
+</li>
+</ul>
+<div class="tab-content" data-tabsetid="5219">
+<div class="tab-pane active" data-value="Patients" id="tab-5219-1">
+<div id="ffximlaoms" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ffximlaoms table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ffximlaoms thead, #ffximlaoms tbody, #ffximlaoms tfoot, #ffximlaoms tr, #ffximlaoms td, #ffximlaoms th {
+  border-style: none;
+}
+
+#ffximlaoms p {
+  margin: 0;
+  padding: 0;
+}
+
+#ffximlaoms .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ffximlaoms .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ffximlaoms .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ffximlaoms .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ffximlaoms .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ffximlaoms .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ffximlaoms .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ffximlaoms .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ffximlaoms .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ffximlaoms .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ffximlaoms .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ffximlaoms .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ffximlaoms .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ffximlaoms .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ffximlaoms .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ffximlaoms .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ffximlaoms .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ffximlaoms .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ffximlaoms .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ffximlaoms .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ffximlaoms .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ffximlaoms .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ffximlaoms .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ffximlaoms .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ffximlaoms .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ffximlaoms .gt_left {
+  text-align: left;
+}
+
+#ffximlaoms .gt_center {
+  text-align: center;
+}
+
+#ffximlaoms .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ffximlaoms .gt_font_normal {
+  font-weight: normal;
+}
+
+#ffximlaoms .gt_font_bold {
+  font-weight: bold;
+}
+
+#ffximlaoms .gt_font_italic {
+  font-style: italic;
+}
+
+#ffximlaoms .gt_super {
+  font-size: 65%;
+}
+
+#ffximlaoms .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ffximlaoms .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ffximlaoms .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ffximlaoms .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ffximlaoms .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ffximlaoms .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ffximlaoms .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ffximlaoms .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ffximlaoms div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="9" class="gt_heading gt_title gt_font_normal gt_bottom_border">Patient information data</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="patient_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">patient_id</th>
+<th id="animal_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">animal_name</th>
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="breed" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">breed</th>
+<th id="dob" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">dob</th>
+<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sex</th>
+<th id="owner_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">owner_id</th>
+<th id="weight_kg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">weight_kg</th>
+<th id="vaccinated" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">vaccinated</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P001</td>
+<td class="gt_row gt_left" headers="animal_name">Biscuit</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">labrador retriever</td>
+<td class="gt_row gt_right" headers="dob">2019-04-12</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O011</td>
+<td class="gt_row gt_right" headers="weight_kg">28.4</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P002</td>
+<td class="gt_row gt_left" headers="animal_name">Luna</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">domestic shorthair</td>
+<td class="gt_row gt_right" headers="dob">2020-07-14</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O002</td>
+<td class="gt_row gt_right" headers="weight_kg">4.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P003</td>
+<td class="gt_row gt_left" headers="animal_name">Max</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">german shepherd</td>
+<td class="gt_row gt_right" headers="dob">2018-11-03</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O003</td>
+<td class="gt_row gt_right" headers="weight_kg">34.7</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P004</td>
+<td class="gt_row gt_left" headers="animal_name">Whiskers</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">persian</td>
+<td class="gt_row gt_right" headers="dob">2021-03-05</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O004</td>
+<td class="gt_row gt_right" headers="weight_kg">NA</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P005</td>
+<td class="gt_row gt_left" headers="animal_name">Rocky</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">bulldog</td>
+<td class="gt_row gt_right" headers="dob">2020-06-22</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O005</td>
+<td class="gt_row gt_right" headers="weight_kg">24.9</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P006</td>
+<td class="gt_row gt_left" headers="animal_name">Cleo</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">siamese</td>
+<td class="gt_row gt_right" headers="dob">2017-09-15</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O006</td>
+<td class="gt_row gt_right" headers="weight_kg">3.8</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P007</td>
+<td class="gt_row gt_left" headers="animal_name">Buddy</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">golden retriever</td>
+<td class="gt_row gt_right" headers="dob">2019-07-20</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O007</td>
+<td class="gt_row gt_right" headers="weight_kg">32.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P008</td>
+<td class="gt_row gt_left" headers="animal_name">Mochi</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">maine coon</td>
+<td class="gt_row gt_right" headers="dob">2022-01-30</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O008</td>
+<td class="gt_row gt_right" headers="weight_kg">5.6</td>
+<td class="gt_row gt_left" headers="vaccinated"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P009</td>
+<td class="gt_row gt_left" headers="animal_name">Zeus</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">rottweiler</td>
+<td class="gt_row gt_right" headers="dob">2016-03-18</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O009</td>
+<td class="gt_row gt_right" headers="weight_kg">47.2</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P010</td>
+<td class="gt_row gt_left" headers="animal_name">Nala</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">beagle</td>
+<td class="gt_row gt_right" headers="dob">2021-08-09</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O010</td>
+<td class="gt_row gt_right" headers="weight_kg">10.3</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P011</td>
+<td class="gt_row gt_left" headers="animal_name">Shadow</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">border collie</td>
+<td class="gt_row gt_right" headers="dob">2019-12-01</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O011</td>
+<td class="gt_row gt_right" headers="weight_kg">19.8</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="tab-pane" data-value="Visits" id="tab-5219-2">
+<div id="ygfbxqebfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ygfbxqebfw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ygfbxqebfw thead, #ygfbxqebfw tbody, #ygfbxqebfw tfoot, #ygfbxqebfw tr, #ygfbxqebfw td, #ygfbxqebfw th {
+  border-style: none;
+}
+
+#ygfbxqebfw p {
+  margin: 0;
+  padding: 0;
+}
+
+#ygfbxqebfw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ygfbxqebfw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ygfbxqebfw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ygfbxqebfw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ygfbxqebfw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ygfbxqebfw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ygfbxqebfw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ygfbxqebfw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ygfbxqebfw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ygfbxqebfw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ygfbxqebfw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ygfbxqebfw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ygfbxqebfw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ygfbxqebfw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ygfbxqebfw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ygfbxqebfw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ygfbxqebfw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ygfbxqebfw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ygfbxqebfw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ygfbxqebfw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ygfbxqebfw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ygfbxqebfw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ygfbxqebfw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ygfbxqebfw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ygfbxqebfw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ygfbxqebfw .gt_left {
+  text-align: left;
+}
+
+#ygfbxqebfw .gt_center {
+  text-align: center;
+}
+
+#ygfbxqebfw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ygfbxqebfw .gt_font_normal {
+  font-weight: normal;
+}
+
+#ygfbxqebfw .gt_font_bold {
+  font-weight: bold;
+}
+
+#ygfbxqebfw .gt_font_italic {
+  font-style: italic;
+}
+
+#ygfbxqebfw .gt_super {
+  font-size: 65%;
+}
+
+#ygfbxqebfw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ygfbxqebfw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ygfbxqebfw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ygfbxqebfw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ygfbxqebfw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ygfbxqebfw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ygfbxqebfw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ygfbxqebfw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ygfbxqebfw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Visit information data</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="visit_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">visit_id</th>
+<th id="pt_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">pt_id</th>
+<th id="visit_date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">visit_date</th>
+<th id="reason" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">reason</th>
+<th id="vet" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">vet</th>
+<th id="fee_charged" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">fee_charged</th>
+<th id="outcome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">outcome</th>
+<th id="follow_up_required" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">follow_up_required</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V001</td>
+<td class="gt_row gt_left" headers="pt_id">P001</td>
+<td class="gt_row gt_right" headers="visit_date">2024-01-15</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V002</td>
+<td class="gt_row gt_left" headers="pt_id">P002</td>
+<td class="gt_row gt_right" headers="visit_date">2024-02-03</td>
+<td class="gt_row gt_left" headers="reason">Vomiting</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">200</td>
+<td class="gt_row gt_left" headers="outcome">gastroenteritis - treated</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V003</td>
+<td class="gt_row gt_left" headers="pt_id">P003</td>
+<td class="gt_row gt_right" headers="visit_date">2024-01-22</td>
+<td class="gt_row gt_left" headers="reason">Lameness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$340.50</td>
+<td class="gt_row gt_left" headers="outcome">referred to ortho</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V004</td>
+<td class="gt_row gt_left" headers="pt_id">P004</td>
+<td class="gt_row gt_right" headers="visit_date">2024-10-03</td>
+<td class="gt_row gt_left" headers="reason">Dental cleaning</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$275,00</td>
+<td class="gt_row gt_left" headers="outcome">completed</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V005</td>
+<td class="gt_row gt_left" headers="pt_id">P005</td>
+<td class="gt_row gt_right" headers="visit_date">2024-02-18</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V006</td>
+<td class="gt_row gt_left" headers="pt_id">P006</td>
+<td class="gt_row gt_right" headers="visit_date">2024-01-30</td>
+<td class="gt_row gt_left" headers="reason">Weight loss</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$210.00</td>
+<td class="gt_row gt_left" headers="outcome">hyperthyroidism suspected</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V007</td>
+<td class="gt_row gt_left" headers="pt_id">P007</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-12</td>
+<td class="gt_row gt_left" headers="reason">Skin irritation</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$155.00</td>
+<td class="gt_row gt_left" headers="outcome">allergies - treatment started</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V008</td>
+<td class="gt_row gt_left" headers="pt_id">P002</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-01</td>
+<td class="gt_row gt_left" headers="reason">Follow-up</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$95.00</td>
+<td class="gt_row gt_left" headers="outcome">resolved</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V009</td>
+<td class="gt_row gt_left" headers="pt_id">P008</td>
+<td class="gt_row gt_right" headers="visit_date">2024-02-25</td>
+<td class="gt_row gt_left" headers="reason">First visit / neuter consult</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged"></td>
+<td class="gt_row gt_left" headers="outcome">scheduled for surgery</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V010</td>
+<td class="gt_row gt_left" headers="pt_id">P010</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-08</td>
+<td class="gt_row gt_left" headers="reason">Limping</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$220.00</td>
+<td class="gt_row gt_left" headers="outcome">soft tissue injury</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V011</td>
+<td class="gt_row gt_left" headers="pt_id">P011</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-15</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="visit_id">V012</td>
+<td class="gt_row gt_left" headers="pt_id">P009</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-20</td>
+<td class="gt_row gt_left" headers="reason">Emergency - trauma</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$520.00</td>
+<td class="gt_row gt_left" headers="outcome">stabilized</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="visit_id">V013</td>
+<td class="gt_row gt_left" headers="pt_id">P003</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-25</td>
+<td class="gt_row gt_left" headers="reason">Ortho follow-up</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$310.00</td>
+<td class="gt_row gt_left" headers="outcome">surgery recommended</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="merging-the-datasets" class="level1">
+<h1>Merging the datasets</h1>
+<p>The operations to merge the two datasets are shown below.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>combined <span class="ot">=</span> <span class="fu">left_join</span>(patient_info_data, visit_info_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"patient_id"</span> <span class="ot">=</span> <span class="st">"pt_id"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The final merged dataset is provided below:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>combined <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Combined dataset"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="rpfnmwguhq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rpfnmwguhq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rpfnmwguhq thead, #rpfnmwguhq tbody, #rpfnmwguhq tfoot, #rpfnmwguhq tr, #rpfnmwguhq td, #rpfnmwguhq th {
+  border-style: none;
+}
+
+#rpfnmwguhq p {
+  margin: 0;
+  padding: 0;
+}
+
+#rpfnmwguhq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rpfnmwguhq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rpfnmwguhq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rpfnmwguhq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rpfnmwguhq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rpfnmwguhq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rpfnmwguhq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rpfnmwguhq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rpfnmwguhq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rpfnmwguhq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rpfnmwguhq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rpfnmwguhq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rpfnmwguhq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rpfnmwguhq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rpfnmwguhq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpfnmwguhq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rpfnmwguhq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rpfnmwguhq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rpfnmwguhq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpfnmwguhq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rpfnmwguhq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpfnmwguhq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rpfnmwguhq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpfnmwguhq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rpfnmwguhq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpfnmwguhq .gt_left {
+  text-align: left;
+}
+
+#rpfnmwguhq .gt_center {
+  text-align: center;
+}
+
+#rpfnmwguhq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rpfnmwguhq .gt_font_normal {
+  font-weight: normal;
+}
+
+#rpfnmwguhq .gt_font_bold {
+  font-weight: bold;
+}
+
+#rpfnmwguhq .gt_font_italic {
+  font-style: italic;
+}
+
+#rpfnmwguhq .gt_super {
+  font-size: 65%;
+}
+
+#rpfnmwguhq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rpfnmwguhq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rpfnmwguhq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rpfnmwguhq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rpfnmwguhq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rpfnmwguhq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rpfnmwguhq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rpfnmwguhq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rpfnmwguhq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="16" class="gt_heading gt_title gt_font_normal gt_bottom_border">Combined dataset</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="patient_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">patient_id</th>
+<th id="animal_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">animal_name</th>
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="breed" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">breed</th>
+<th id="dob" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">dob</th>
+<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sex</th>
+<th id="owner_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">owner_id</th>
+<th id="weight_kg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">weight_kg</th>
+<th id="vaccinated" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">vaccinated</th>
+<th id="visit_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">visit_id</th>
+<th id="visit_date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">visit_date</th>
+<th id="reason" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">reason</th>
+<th id="vet" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">vet</th>
+<th id="fee_charged" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">fee_charged</th>
+<th id="outcome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">outcome</th>
+<th id="follow_up_required" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">follow_up_required</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P001</td>
+<td class="gt_row gt_left" headers="animal_name">Biscuit</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">labrador retriever</td>
+<td class="gt_row gt_right" headers="dob">2019-04-12</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O011</td>
+<td class="gt_row gt_right" headers="weight_kg">28.4</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V001</td>
+<td class="gt_row gt_right" headers="visit_date">2024-01-15</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P002</td>
+<td class="gt_row gt_left" headers="animal_name">Luna</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">domestic shorthair</td>
+<td class="gt_row gt_right" headers="dob">2020-07-14</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O002</td>
+<td class="gt_row gt_right" headers="weight_kg">4.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V002</td>
+<td class="gt_row gt_right" headers="visit_date">2024-02-03</td>
+<td class="gt_row gt_left" headers="reason">Vomiting</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">200</td>
+<td class="gt_row gt_left" headers="outcome">gastroenteritis - treated</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P002</td>
+<td class="gt_row gt_left" headers="animal_name">Luna</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">domestic shorthair</td>
+<td class="gt_row gt_right" headers="dob">2020-07-14</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O002</td>
+<td class="gt_row gt_right" headers="weight_kg">4.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V008</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-01</td>
+<td class="gt_row gt_left" headers="reason">Follow-up</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$95.00</td>
+<td class="gt_row gt_left" headers="outcome">resolved</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P003</td>
+<td class="gt_row gt_left" headers="animal_name">Max</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">german shepherd</td>
+<td class="gt_row gt_right" headers="dob">2018-11-03</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O003</td>
+<td class="gt_row gt_right" headers="weight_kg">34.7</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+<td class="gt_row gt_left" headers="visit_id">V003</td>
+<td class="gt_row gt_right" headers="visit_date">2024-01-22</td>
+<td class="gt_row gt_left" headers="reason">Lameness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$340.50</td>
+<td class="gt_row gt_left" headers="outcome">referred to ortho</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P003</td>
+<td class="gt_row gt_left" headers="animal_name">Max</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">german shepherd</td>
+<td class="gt_row gt_right" headers="dob">2018-11-03</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O003</td>
+<td class="gt_row gt_right" headers="weight_kg">34.7</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+<td class="gt_row gt_left" headers="visit_id">V013</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-25</td>
+<td class="gt_row gt_left" headers="reason">Ortho follow-up</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$310.00</td>
+<td class="gt_row gt_left" headers="outcome">surgery recommended</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P004</td>
+<td class="gt_row gt_left" headers="animal_name">Whiskers</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">persian</td>
+<td class="gt_row gt_right" headers="dob">2021-03-05</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O004</td>
+<td class="gt_row gt_right" headers="weight_kg">NA</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V004</td>
+<td class="gt_row gt_right" headers="visit_date">2024-10-03</td>
+<td class="gt_row gt_left" headers="reason">Dental cleaning</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$275,00</td>
+<td class="gt_row gt_left" headers="outcome">completed</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P005</td>
+<td class="gt_row gt_left" headers="animal_name">Rocky</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">bulldog</td>
+<td class="gt_row gt_right" headers="dob">2020-06-22</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O005</td>
+<td class="gt_row gt_right" headers="weight_kg">24.9</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+<td class="gt_row gt_left" headers="visit_id">V005</td>
+<td class="gt_row gt_right" headers="visit_date">2024-02-18</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P006</td>
+<td class="gt_row gt_left" headers="animal_name">Cleo</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">siamese</td>
+<td class="gt_row gt_right" headers="dob">2017-09-15</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O006</td>
+<td class="gt_row gt_right" headers="weight_kg">3.8</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V006</td>
+<td class="gt_row gt_right" headers="visit_date">2024-01-30</td>
+<td class="gt_row gt_left" headers="reason">Weight loss</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$210.00</td>
+<td class="gt_row gt_left" headers="outcome">hyperthyroidism suspected</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P007</td>
+<td class="gt_row gt_left" headers="animal_name">Buddy</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">golden retriever</td>
+<td class="gt_row gt_right" headers="dob">2019-07-20</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O007</td>
+<td class="gt_row gt_right" headers="weight_kg">32.1</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V007</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-12</td>
+<td class="gt_row gt_left" headers="reason">Skin irritation</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$155.00</td>
+<td class="gt_row gt_left" headers="outcome">allergies - treatment started</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P008</td>
+<td class="gt_row gt_left" headers="animal_name">Mochi</td>
+<td class="gt_row gt_left" headers="species">cat</td>
+<td class="gt_row gt_left" headers="breed">maine coon</td>
+<td class="gt_row gt_right" headers="dob">2022-01-30</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O008</td>
+<td class="gt_row gt_right" headers="weight_kg">5.6</td>
+<td class="gt_row gt_left" headers="vaccinated"></td>
+<td class="gt_row gt_left" headers="visit_id">V009</td>
+<td class="gt_row gt_right" headers="visit_date">2024-02-25</td>
+<td class="gt_row gt_left" headers="reason">First visit / neuter consult</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged"></td>
+<td class="gt_row gt_left" headers="outcome">scheduled for surgery</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P009</td>
+<td class="gt_row gt_left" headers="animal_name">Zeus</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">rottweiler</td>
+<td class="gt_row gt_right" headers="dob">2016-03-18</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O009</td>
+<td class="gt_row gt_right" headers="weight_kg">47.2</td>
+<td class="gt_row gt_left" headers="vaccinated">no</td>
+<td class="gt_row gt_left" headers="visit_id">V012</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-20</td>
+<td class="gt_row gt_left" headers="reason">Emergency - trauma</td>
+<td class="gt_row gt_left" headers="vet">Dr. Chen</td>
+<td class="gt_row gt_right" headers="fee_charged">$520.00</td>
+<td class="gt_row gt_left" headers="outcome">stabilized</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="patient_id">P010</td>
+<td class="gt_row gt_left" headers="animal_name">Nala</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">beagle</td>
+<td class="gt_row gt_right" headers="dob">2021-08-09</td>
+<td class="gt_row gt_left" headers="sex">f</td>
+<td class="gt_row gt_left" headers="owner_id">O010</td>
+<td class="gt_row gt_right" headers="weight_kg">10.3</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V010</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-08</td>
+<td class="gt_row gt_left" headers="reason">Limping</td>
+<td class="gt_row gt_left" headers="vet">Dr. Osei</td>
+<td class="gt_row gt_right" headers="fee_charged">$220.00</td>
+<td class="gt_row gt_left" headers="outcome">soft tissue injury</td>
+<td class="gt_row gt_left" headers="follow_up_required">yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="patient_id">P011</td>
+<td class="gt_row gt_left" headers="animal_name">Shadow</td>
+<td class="gt_row gt_left" headers="species">dog</td>
+<td class="gt_row gt_left" headers="breed">border collie</td>
+<td class="gt_row gt_right" headers="dob">2019-12-01</td>
+<td class="gt_row gt_left" headers="sex">m</td>
+<td class="gt_row gt_left" headers="owner_id">O011</td>
+<td class="gt_row gt_right" headers="weight_kg">19.8</td>
+<td class="gt_row gt_left" headers="vaccinated">yes</td>
+<td class="gt_row gt_left" headers="visit_id">V011</td>
+<td class="gt_row gt_right" headers="visit_date">2024-03-15</td>
+<td class="gt_row gt_left" headers="reason">Annual wellness</td>
+<td class="gt_row gt_left" headers="vet">Dr. Patel</td>
+<td class="gt_row gt_right" headers="fee_charged">$185.00</td>
+<td class="gt_row gt_left" headers="outcome">healthy</td>
+<td class="gt_row gt_left" headers="follow_up_required">no</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Patient visit records"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: flatly</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: tango</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true      # hides code by default but lets reader expand it</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true     # adds a button to show/hide all code</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">eval =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  ggplot2, </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  janitor, </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  dplyr, </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  tidyr,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  tidyverse, </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  ggpubr, </span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  lubridate, </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  gt, </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  bslib</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE, include = FALSE}</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(), <span class="st">"/data_cleaning_example/patients_raw.csv"</span>)) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(), <span class="st">"/data_cleaning_example/visits_raw.csv"</span>)) <span class="sc">%&gt;%</span> clean_names</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>In this example, there are two synthetic datasets: patient information dataset and visit information dataset. The patient information datasetincludes information like name, species, breed, date of birth, sex, weight and vaccination status. The visit information dataset provides information about the patient's visit to the veterinarian. Data collected in this dataset include date of visit, presenting complaint, the patient's veterinarian for that visit, fees and outcome.</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>Suppose we wanted to get an idea of the presenting complaints that the clinic encountered. This would effect personnel training, infection control policies and inventory management. We could analyze just the visit information dataset but, at best, the analysis would be incomplete. Afterall, veterinary clinics are multispecies in nature. Determining the most common presentation is often not enough information. We need to understand these presentations across species, sex, age groups and breed. This requires that visit information data be merged with the patient information dataset.</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>Patient and visit information datasets are provided below. Upon visual inspection of patient information data, we notice that there are heterogeneous formats within each column. For example, under the *species* column, a dog is designated as "dog", "DOG" or "Dog". *dob* (date of birth) has dates in the format "YYYY-MM-DD", "DD/MM/YYYY", "MMMM DDDD YYYY", "MM-YYYY". There are also multiple ways of designating *sex*. Females are designated by "F" or "Female." Males are designated by "M", "m", or "Male." And in the *vaccinated* column, a vaccinated animal can be designated by "Yes", "yes", "YES". Further, both *weight* and *vaccinated* have missing data.</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>For the visit information dataset, we can notice similar heterogeneities in data formats for *visit_date* and *vet*. There is also a likely error under *fee_charged*: \$275,00 for Visit_ID = V004 as well as missing data (Visit_ID = V009).</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="fu">navset_tab</span>(</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Patients"</span>,</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>    patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>      <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Patient information data"</span>)</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Visits"</span>,</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>      <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Visit information data"</span>)</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="fu"># Cleaning the patient information dataset</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>The *species, breed, sex* and *vaccinated* columns would all benefit by being in a single case. In this example, I convert all to lower case.</span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Convert all to lowercase, include = TRUE}</span></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>  patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">tolower</span>(species), </span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">breed =</span> <span class="fu">tolower</span>(breed), </span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">tolower</span>(sex),</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">vaccinated =</span> <span class="fu">tolower</span>(vaccinated)</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>The *dob* column suffers from multiple formats. In the script below, I use the function parse_date_time from the lubridate package to convert them all to a single date format. Notice that for *patient_id* = P007, the original *dob* 07-2019 was converted to 2019-07-20. The original date of birth provided did not indicate which day the birthday was on. In cases like these, I would flag this and bring it to the attention of the subject-matter experts, who may go into their records to find the exact birthday. If unavailable, I would seek a consensus among the clinical experts that assuming a birthday of 2019-07-20 does not create a significant clinical difference when compared to another birthday in the month of July.</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>  patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">dob =</span> <span class="fu">parse_date_time</span>(dob, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"ymd"</span>, <span class="st">"dmy"</span>, <span class="st">"mdy"</span>, <span class="st">"my"</span>))</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>The *sex* column was partially addressed earlier by converting all uppercase letters to lowercase. However, while most sex designations are single letter, there are two that spell out male and female. This is addressed below.</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>  patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> </span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="st">"m"</span>, </span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>        sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="st">"f"</span>, </span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> sex</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>For the *weight_kg* and *vaccinated* columns, there are missing values. In both cases, I would bring this to the attention of the subject-matter experts before attempting imputation. The patient with the missing weight (P004) received a dental cleaning. From my own clinical experience, I know dental cleanings in dogs and cats are always performed under general anesthesia (in contrast to horses, which are done in standing). It is certainty that a patient undergoing general anesthesia had a weight attained by the veterinarian. It is likely very possible to attain the patient's weight by exploring the medical record further or contacting the primary veterinarian. If that is not possible, I would ask the subject-matter experts to provide a weight they felt was appropriate for this breed, sex, and age of cat along with any other comorbidities we may know about this cat. Imputation would be my last resort.</span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>Similarly, I would bring the patient with the missing vaccination status to the attention of the subject-matter experts. Again, vaccination records may exist in the medical record and could be found with further investigation. Sometimes vaccination status is left blank because records are still being transferred from the previous veterinarian or a shelter. If the cat was from a shelter, it most likely has been vaccinated. According to the visit information dataset, the cat's visit occurred on 2024-02-25. It was the cat's first visit and had a neuter consult and was subsequently scheduled for surgery, most likely to get neutered. It was born on 2022-01-30. The cat's first visit occurred more than two years after its date of birth. Again, leaning on my own clinical experience, this is not a shelter cat as most shelters will neuter (one main reason is population control as cats can reproduce rapidly) and vaccinate cats. Another option is to contact the primary veterinarian's office. We may find that empty fields may have a meaning to that specific clinic. In the absence of any other information, I would err on the side of this cat's vaccination status being unvaccinated, or simply unknown.</span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>For this example, for both cases of missing data above, I will leave as is.</span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>Another thing to note in the patient information dataset is that there is a repeat row of patient P002. This is something I would discuss with the subject-matter experts. But the two rows are completely identical, and likely shows up twice because that patient had two visits (as logged in the visit information dataset). For my purposes, this extra row is not needed.</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>patient_info_data <span class="ot">=</span> <span class="fu">unique</span>(patient_info_data)</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="fu"># Cleaning the visit information dataset</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>The *visit_date* column contains dates with various formats. Again, the parse_date_time function in the lubridate package handles this very well.</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>    <span class="at">visit_date =</span> <span class="fu">parse_date_time</span>(visit_date, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"ymd"</span>, <span class="st">"B d Y"</span>, <span class="st">"dmy"</span>))</span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>The *vet* column contains veterinarian names. I will make sure that they all have similar formats. Further, I have found it useful when working with names to make sure they are formatted like actual names. It can help prevent the extra step of re-formatting names when reporting out.</span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">&lt;-</span> </span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>    <span class="at">vet =</span> <span class="fu">str_to_title</span>(vet)</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>The missing value in the *fee_charged* column could be determined by contacting the primary veterinarian. If that is not possible, this value could be estimated by consulting with the appropriate subject-matter experts or researching various clinic websites that are similar to this clinic.</span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>There is very little need for cleaning for the *outcome* and *follow_up_required* columns. In this case, I may just convert all values to lowercase letters in anticipation of having to append new data to the current dataset.</span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">&lt;-</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">str_to_lower</span>(outcome), </span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>    <span class="at">follow_up_required =</span> <span class="fu">str_to_lower</span>(follow_up_required)</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>One final thing to investigate regarding the visit information dataset is that there is a patient with the ID P099, non-existent on the patient information dataset. The closest patient ID in the patient information dataset is P009. This is something to bring to the attention of the subject-matter experts and investigate whether this is a type or indeed a different patient. In this case, this is a typo. The correction is made below.</span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>visit_info_data <span class="ot">=</span> </span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>  visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt_id =</span> </span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>        pt_id <span class="sc">==</span> <span class="st">"P099"</span> <span class="sc">~</span> <span class="st">"P009"</span>, </span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> pt_id</span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>The cleaned datasets are shown below.</span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a><span class="fu">navset_tab</span>(</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Patients"</span>,</span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>    patient_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>      <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Patient information data"</span>)</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_panel</span>(</span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Visits"</span>,</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>    visit_info_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>      <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Visit information data"</span>)</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="fu"># Merging the datasets</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>The operations to merge the two datasets are shown below.</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>combined <span class="ot">=</span> <span class="fu">left_join</span>(patient_info_data, visit_info_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"patient_id"</span> <span class="ot">=</span> <span class="st">"pt_id"</span>))</span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>The final merged dataset is provided below:</span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a>combined <span class="sc">%&gt;%</span></span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Combined dataset"</span>)</span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

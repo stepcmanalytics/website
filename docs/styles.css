@@ -1,0 +1,324 @@
+/* ============================================================
+   [Your Practice Name] — Minimalist Monochrome Stylesheet
+   Fonts: EB Garamond (body/display) + DM Mono (labels/accents)
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #111110;
+  --dark:    #2a2a28;
+  --mid:     #6b6b68;
+  --light:   #b8b8b4;
+  --pale:    #e8e8e4;
+  --off-white: #f4f4f0;
+  --white:   #fafaf8;
+
+  --serif:   'EB Garamond', Georgia, serif;
+  --mono:    'DM Mono', 'Courier New', monospace;
+
+  --max-w:   1080px;
+  --pad-x:   clamp(1.5rem, 5vw, 4rem);
+}
+
+html { font-size: 20px !important; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--serif);
+  background: var(--white);
+  color: var(--black);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Quarto injects a wrapper — neutralise it */
+#quarto-content, .page-layout-full { padding: 0 !important; margin: 0 !important; }
+main.content { padding: 0 !important; max-width: 100% !important; }
+
+a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--mid); }
+
+/* ---------- Nav ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem var(--pad-x);
+  background: var(--white);
+  border-bottom: 1px solid var(--pale);
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mid);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--black); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(5rem, 12vw, 9rem) var(--pad-x) clamp(3rem, 6vw, 5rem);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 1.4rem;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--black);
+  margin-bottom: 1.2rem;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--mid);
+  font-style: italic;
+  max-width: 540px;
+  margin-bottom: 2.4rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--black);
+  padding: 0.75rem 1.6rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cta-btn:hover {
+  background: var(--dark);
+  color: var(--white);
+}
+
+.hero-rule {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  height: 1px;
+  background: var(--pale);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: clamp(4rem, 8vw, 6.5rem) var(--pad-x);
+}
+
+.section-alt { background: var(--off-white); }
+
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2rem 4rem;
+  align-items: start;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light);
+  padding-top: 0.35rem;
+}
+
+.section-body h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  color: var(--black);
+}
+
+.section-body p {
+  color: var(--dark);
+  margin-bottom: 1rem;
+  max-width: 640px;
+}
+
+/* ---------- Services List (scrollable) ---------- */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 1rem;
+  border-top: 1px solid var(--pale);
+  scrollbar-width: thin;
+  scrollbar-color: var(--pale) transparent;
+}
+
+
+.service-card {
+  padding: 1.2rem 1.6rem 1.2rem 0;
+  border-bottom: 1px solid var(--pale);
+  border-right: none;       /* remove the old grid divider */
+}
+
+.service-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--black);
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--mid);
+  max-width: 100%;
+}
+
+/* ---------- Credentials ---------- */
+.credentials-list {
+  list-style: none;
+  border-top: 1px solid var(--pale);
+  margin-top: 0.5rem;
+}
+
+.credentials-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--pale);
+}
+
+.cred-title {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--black);
+  min-width: 220px;
+}
+
+.cred-detail {
+  font-size: 0.88rem;
+  color: var(--mid);
+  text-align: right;
+}
+
+/* ---------- Contact ---------- */
+.contact-block {
+  margin-top: 1.8rem;
+  border-top: 1px solid var(--pale);
+}
+
+.contact-block p {
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--pale);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.contact-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--light);
+  min-width: 80px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 2.5rem var(--pad-x);
+  border-top: 1px solid var(--pale);
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--light);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 0.5rem 0;
+  }
+
+  .section-label { margin-bottom: 0.6rem; }
+
+  .credentials-list li {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .cred-detail { text-align: left; }
+
+  .nav-links { gap: 1.2rem; }
+}
+
+
+
+
+.main-container {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+.container {
+  max-width: 900px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+body {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+}
