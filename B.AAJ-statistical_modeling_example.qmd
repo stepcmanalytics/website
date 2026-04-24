@@ -54,7 +54,7 @@ For the visit information dataset, we can notice similar heterogeneities in data
 
 ## Patients
 
-```{r}
+```{r, echo = FALSE}
 patient_info_data %>%
       gt() %>%
       tab_header(title = "Patient information data")
@@ -62,7 +62,7 @@ patient_info_data %>%
 
 ## Visits
 
-```{r}
+```{r, echo = FALSE}
 visit_info_data %>%
       gt() %>%
       tab_header(title = "Visit information data")
@@ -174,22 +174,25 @@ visit_info_data =
 
 The cleaned datasets are shown below.
 
+::: {.panel-tabset}
+
+## Patients
+
 ```{r, echo = FALSE}
-navset_tab(
-  nav_panel(
-    "Patients",
-    patient_info_data %>%
+patient_info_data %>%
       gt() %>%
       tab_header(title = "Patient information data")
-  ),
-  nav_panel(
-    "Visits",
-    visit_info_data %>%
+```
+
+## Visits
+
+```{r, echo = FALSE}
+visit_info_data %>%
       gt() %>%
       tab_header(title = "Visit information data")
-  )
-)
 ```
+
+:::
 
 # Merging the datasets
 
@@ -201,7 +204,7 @@ combined = left_join(patient_info_data, visit_info_data, by = c("patient_id" = "
 
 The final merged dataset is provided below:
 
-```{r}
+```{r, echo = FALSE}
 combined %>%
   gt() %>%
   tab_header(title = "Combined dataset")
