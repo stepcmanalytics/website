@@ -54,7 +54,7 @@ For the visit information dataset, we can notice similar heterogeneities in data
 
 ## Patients
 
-```{r, echo = TRUE}
+```{r}
 patient_info_data %>%
       gt() %>%
       tab_header(title = "Patient information data")
@@ -62,7 +62,7 @@ patient_info_data %>%
 
 ## Visits
 
-```{rm echo = TRUE}
+```{r}
 visit_info_data %>%
       gt() %>%
       tab_header(title = "Visit information data")
@@ -70,23 +70,6 @@ visit_info_data %>%
 
 :::
 
-
-```{r, echo = FALSE}
-navset_tab(
-  nav_panel(
-    "Patients",
-    patient_info_data %>%
-      gt() %>%
-      tab_header(title = "Patient information data")
-  ),
-  nav_panel(
-    "Visits",
-    visit_info_data %>%
-      gt() %>%
-      tab_header(title = "Visit information data")
-  )
-)
-```
 
 # Cleaning the patient information dataset
 
