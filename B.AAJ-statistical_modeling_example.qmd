@@ -50,6 +50,27 @@ Patient and visit information datasets are provided below. Upon visual inspectio
 
 For the visit information dataset, we can notice similar heterogeneities in data formats for *visit_date* and *vet*. There is also a likely error under *fee_charged*: \$275,00 for Visit_ID = V004 as well as missing data (Visit_ID = V009).
 
+::: {.panel-tabset}
+
+## Patients
+
+```{r, echo = TRUE}
+patient_info_data %>%
+      gt() %>%
+      tab_header(title = "Patient information data")
+```
+
+## Visits
+
+```{rm echo = TRUE}
+visit_info_data %>%
+      gt() %>%
+      tab_header(title = "Visit information data")
+```
+
+:::
+
+
 ```{r, echo = FALSE}
 navset_tab(
   nav_panel(
