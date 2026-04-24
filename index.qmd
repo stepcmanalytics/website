@@ -52,7 +52,7 @@ format:
           <h3>Data cleaning, merging and formatting</h3>
           <p>Sometimes data has been collected, but it's not quite ready for analysis. Human errors in data entry can cause incongruencies that make analysis difficult. Sometimes data comes from multiple sources and they need to be merged. And other times, data is in various formats that cannot coexist without compromising the integrity of your data. These issues are often the most challenging and time-consuming part of data work. I perform the complex operations needed to get your dataset in shape for your analysis while keeping a record of each operation to ensure reproducibility and repeatability.
           <br><br>
-          <a href="B.AAJ-statistical_modeling_example.html">Click here for an example.</a></p>
+          <a href="B.AAJ-data_cleaning_example.html">Click here for an example.</a></p>
         </div>
         <div class="service-card" id = "service-understanding-example">
           <h3>Understanding your data</h3>
